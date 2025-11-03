@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>หน้าหลักสาขาวิชา</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #f7f7fb;
+      --card: #ffffff;
+      --text: #222;
+      --muted: #6b7280;
+      --primary: #3b82f6;
+      --shadow: 0 10px 25px rgba(0,0,0,.08);
+      --radius: 18px;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial; color: var(--text); background: var(--bg); }
+
+    .topbar { height: 44px; background: #e5e7eb; display: flex; align-items: center; padding: 0 14px; gap: 10px; }
+    .dot { width: 10px; height: 10px; border-radius: 999px; background: #d1d5db; }
+
+    .container-custom { width: min(1100px, 92%); margin: 26px auto 60px; }
+
+    /* Slider */
+    .slider { position: relative; border-radius: var(--radius); overflow: hidden; background: #e5e7eb; box-shadow: var(--shadow); }
+    .slides { display: grid; grid-auto-flow: column; grid-auto-columns: 100%; transition: transform .5s ease; }
+    .slide { position: relative; height: clamp(180px, 38vw, 380px); }
+    .slide img { width: 100%; height: 100%; object-fit: cover; }
+    .slide h2 { position: absolute; bottom: 20px; left: 30px; margin: 0; font-size: clamp(20px, 3.2vw, 40px); color: #fff; text-shadow: 0 2px 8px rgba(0,0,0,.35); letter-spacing: .3px; }
+
+    .arrow { position: absolute; top: 50%; translate: 0 -50%; width: 42px; height: 42px; border: none; border-radius: 999px; display: grid; place-items: center; background: rgba(255,255,255,.75); backdrop-filter: blur(3px); cursor: pointer; transition: transform .12s ease; box-shadow: 0 4px 12px rgba(0,0,0,.15); }
+    .arrow:hover { transform: scale(1.06); }
+    .arrow:active { transform: scale(0.98); }
+    .arrow svg { width: 20px; height: 20px; }
+    .arrow.prev { left: 12px; }
+    .arrow.next { right: 12px; }
+
+    .dots { position: absolute; left: 50%; bottom: 12px; translate: -50% 0; display: flex; gap: 8px; padding: 6px 10px; border-radius: 999px; background: rgba(0,0,0,.25); }
+    .dotbtn { width: 8px; height: 8px; border-radius: 999px; border: none; background: #d1d5db; opacity: .7; cursor: pointer; }
+    .dotbtn[aria-current="true"] { background: white; opacity: 1; }
+
+    /* Cards */
+    .cards { display: grid; gap: 16px; grid-template-columns: repeat(3, 1fr); margin-top: 26px; }
+    @media (max-width: 900px) { .cards { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 640px) { .cards { grid-template-columns: 1fr; } }
+
+    .card { background: var(--card); border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden; display: grid; }
+    .thumb img { width: 100%; aspect-ratio: 16/9; object-fit: cover; }
+    .content { padding: 16px 16px 18px; display: grid; gap: 8px; }
+    .title { font-size: 18px; font-weight: 700; line-height: 1.3; }
+    .desc { color: var(--muted); font-size: 14px; line-height: 1.55; }
+    .actions { margin-top: 6px; }
+    .btn-custom { display: inline-block; padding: 10px 14px; border-radius: 12px; background: var(--primary); color: white; text-decoration: none; font-weight: 600; font-size: 14px; box-shadow: 0 6px 16px rgba(59,130,246,.35); }
+    .btn-custom:focus { outline: 3px solid rgba(59,130,246,.35); outline-offset: 2px; }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <div id="menu"></div>
+  <script>
+    fetch("topmenu.html")
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById("menu").innerHTML = data;
+    });
+  </script>
+
+  <!-- Topbar -->
+  <div class="topbar" aria-hidden="true">
+    <div class="dot"></div><div class="dot"></div><div class="dot"></div>
+  </div>
+
+  <main class="container-custom">
+    <!-- Slider -->
+    <section class="slider" aria-roledescription="carousel" aria-label="สไลด์แบนเนอร์">
+      <div class="slides" id="slides">
+        <div class="slide">
+          <img src="png/png1.jpg" alt="ภาพสไลด์ 1">
+          <h2>สวัสดีจากสไลด์ #1</h2>
+        </div>
+        <div class="slide">
+          <img src="png/png2.jpg" alt="ภาพสไลด์ 2">
+          <h2>ข้อความ/รูปภาพ</h2>
+        </div>
+        <div class="slide">
+          <img src="png/png3.jpeg" alt="ภาพสไลด์ 3">
+          <h2>สไลด์สุดท้าย</h2>
+        </div>
+      </div>
+      <button class="arrow prev" id="prev" aria-label="ก่อนหน้า">
+        <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+      </button>
+      <button class="arrow next" id="next" aria-label="ถัดไป">
+        <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+      </button>
+      <div class="dots" id="dots"></div>
+    </section>
+
+    <!-- Cards -->
+    <section class="cards" aria-label="รายการคอนเทนต์">
+      <article class="card">
+        <div class="thumb">
+          <img src="png/png4.jpg" alt="รูปภาพที่หนึ่ง">
+        </div>
+        <div class="content">
+          <div class="title">นี่คือเรื่องจริง.......ไม่ได้โม้นะ</div>
+          <p class="desc">ฝึกจริง ทำจริง ถ่ายทอดจริง ทีมไลฟ์สตรีมมิ่ง TCIMCRU</p>
+          <div class="actions"><a class="btn-custom" href="#">อ่านต่อ</a></div>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="thumb">
+          <img src="png/png5.jpg" alt="รูปภาพที่สอง">
+        </div>
+        <div class="content">
+          <div class="title">ทุกกิจกรรมคือการเรียนรู้จริงๆ</div>
+          <p class="desc">น้องๆ ที่สนใจสมัครมาเรียนรู้กับพวกเรา TCIMCRU</p>
+          <div class="actions"><a class="btn-custom" href="#">อ่านต่อ</a></div>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="thumb">
+          <img src="png/png6.jpg" alt="รูปภาพที่สาม">
+        </div>
+        <div class="content">
+          <div class="title">สาขานี้เข้ามาเรียนปีแรกก็เอาเรื่องนะ...ที่นี่ TCIMCRU</div>
+          <p class="desc">(เตรียมงานไลฟ์สด)</p>
+          <div class="actions"><a class="btn-custom" href="#">อ่านต่อ</a></div>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Slider JS -->
+  <script>
+    const slides = document.getElementById('slides');
+    const total = slides.children.length;
+    let index = 0;
+    const prev = document.getElementById('prev');
+    const next = document.getElementById('next');
+    const dots = document.getElementById('dots');
+
+    for (let i = 0; i < total; i++) {
+      const b = document.createElement('button');
+      b.className = 'dotbtn';
+      b.setAttribute('aria-label', `ไปยังสไลด์ที่ ${i+1}`);
+      b.addEventListener('click', () => go(i, true));
+      dots.appendChild(b);
+    }
+
+    function update() {
+      slides.style.transform = `translateX(-${index * 100}%)`;
+      [...dots.children].forEach((el, i) => el.setAttribute('aria-current', i === index ? 'true' : 'false'));
+    }
+
+    function go(to, user = false) {
+      index = (to + total) % total;
+      update();
+      if (user) stopAuto();
+    }
+
+    prev.addEventListener('click', () => go(index - 1, true));
+    next.addEventListener('click', () => go(index + 1, true));
+
+    let timer = null;
+    function startAuto(){ timer = setInterval(() => go(index + 1), 4200); }
+    function stopAuto(){ if (timer) clearInterval(timer); timer = null; }
+    startAuto();
+
+    const slider = document.querySelector('.slider');
+    slider.addEventListener('mouseenter', stopAuto);
+    slider.addEventListener('mouseleave', startAuto);
+    slider.addEventListener('focusin', stopAuto);
+    slider.addEventListener('focusout', startAuto);
+
+    update();
+  </script>
+</body>
+</html>

@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wireframe Layout</title>
+  <style>
+    body {
+      font-family: "Segoe UI", Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      background: #f5f5f5;
+      color: #333;
+    }
+
+    .container {
+      width: 1200px;
+      display: grid;
+      grid-template-areas:
+        "header header"
+        "content sidebar"
+        "footer footer";
+      grid-template-columns: 3fr 1fr;
+      gap: 20px;
+      padding: 20px;
+    }
+
+    header {
+      grid-area: header;
+      background: linear-gradient(135deg, #4a90e2, #357ABD);
+      height: 120px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      font-size: 2rem;
+      font-weight: bold;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .content {
+      grid-area: content;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .post, .comment {
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column; /* จัดให้องค์ประกอบวางแนวตั้ง */
+      align-items: flex-start; /* ชิดซ้าย */
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      transition: transform 0.2s;
+      position: relative;
+    }
+
+    .post:hover, .comment:hover {
+      transform: translateY(-3px);
+    }
+
+    .comment {
+      background: #f0f4ff;
+    }
+
+    /* โปรไฟล์รูปวงกลม */
+    .profile {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      overflow: hidden;
+      margin-bottom: 10px;
+      border: 2px solid #fff;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+
+    .profile img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .post p, .comment p {
+      margin: 0;
+      line-height: 1.6;
+      font-size: 1rem;
+    }
+
+    aside {
+      grid-area: sidebar;
+      background: #fff;
+      border: 1px solid #ddd;
+      padding: 15px;
+      text-align: center;
+      border-radius: 12px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    aside img {
+      max-width: 100%;
+      border-radius: 12px;
+      margin-top: 10px;
+    }
+
+    footer {
+      grid-area: footer;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      justify-items: center;
+      background: #fff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    footer div {
+      width: 100%;
+      aspect-ratio: 16/9;
+      border-radius: 15px;
+      overflow: hidden;
+      position: relative;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    footer div img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+
+    footer div:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.25);
+    }
+
+    footer div:hover img {
+      transform: scale(1.08);
+      filter: brightness(1.1);
+    }
+
+    footer div::after {
+      content: attr(data-caption);
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(0, 0, 0, 0.55);
+      color: #fff;
+      font-size: 1rem;
+      text-align: center;
+      padding: 8px 0;
+      opacity: 0;
+      transform: translateY(100%);
+      transition: all 0.3s ease;
+    }
+
+    footer div:hover::after {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      Mentions
+    </header>
+
+    <div class="content">
+      <div class="post">
+        <span class="profile">
+          <img src="png/png69.jpg" alt="โปรไฟล์โพสต์หลัก">
+        </span>
+        <p>โพสต์หลัก</p>
+      </div>
+
+      <div class="comment">
+        <span class="profile">
+          <img src="png/png69.jpg" alt="โปรไฟล์ความคิดเห็น">
+        </span>
+        <p>
+          มหาวิทยาลัยราชภัฏหมู่บ้านจอมบึง<br>
+          เมื่อวันที่ 29 ตุลาคม 2568<br>
+          ผศ.ดร.รพีพรรณ กองตูม รองอธิการบดีฯ ได้เยี่ยมชมและให้กำลังใจนักศึกษาในโครงการ Eco Sphere ผลงานสุดสร้างสรรค์จากทีม #TciMcru ที่ร่วมแรงร่วมใจพัฒนา “พื้นที่สระมุจลินท์” และ “ศาลาจำปาหอม” ให้กลายเป็น แหล่งเรียนรู้เชิงนวัตกรรมด้านสิ่งแวดล้อม 🌱
+💡 โครงการนี้เกิดจากพลังบูรณาการของหลากหลายสาขาวิชา
+👉เทคโนโลยีและนวัตกรรมคอมพิวเตอร์
+👉คณิตศาสตร์​ และ
+👉ครูรัก(ษ์)ถิ่น สาขาการประถมศึกษา
+ร่วมกันออกแบบพื้นที่สีเขียว และพัฒนานวัตกรรมการเรียนรู้ เพื่อให้ที่นี่เป็นทั้ง “แหล่งเรียนรู้ – แหล่งพักผ่อน – แหล่งแรงบันดาลใจ”
+สำหรับอาจารย์ บุคลากร และนักศึกษาทุกคน 🌤️
+👏 ขอชื่นชมพลังของทุกคนที่ร่วมกันสร้างสรรค์ “พื้นที่สีเขียวแห่งการเรียนรู้”
+อาจารย์​ที่ปรึกษา​โครงการ​:  อ.อ​ดิ​ศักดิ์​ โฮนอก​อ.ดร.เชาวฤทธิ์​ พันธ์​ทอง​ และ​ ผศ.ดร.ภูมินทร์​ สุมาลัย​
+        </p>
+      </div>
+    </div>
+
+    <aside>
+      <h3>โฆษณา / รูปภาพ</h3>
+      <img src="png/png60.jpg" alt="Example Image">
+    </aside>
+
+    <footer>
+      <div data-caption="รูปที่ 1"><img src="png/png61.jpg" alt="รูปที่ 1"></div>
+      <div data-caption="รูปที่ 2"><img src="png/png62.jpg" alt="รูปที่ 2"></div>
+      <div data-caption="รูปที่ 3"><img src="png/png63.jpg" alt="รูปที่ 3"></div>
+      <div data-caption="รูปที่ 4"><img src="png/png64.jpg" alt="รูปที่ 4"></div>
+      <div data-caption="รูปที่ 5"><img src="png/png65.jpg" alt="รูปที่ 5"></div>
+      <div data-caption="รูปที่ 6"><img src="png/png66.jpg" alt="รูปที่ 6"></div>
+      <div data-caption="รูปที่ 7"><img src="png/png67.jpg" alt="รูปที่ 7"></div>
+      <div data-caption="รูปที่ 8"><img src="png/png68.jpg" alt="รูปที่ 8"></div>
+    </footer>
+  </div>
+</body>
+</html>

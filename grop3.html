@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Galaxy Hero + Infinite Card Carousel</title>
+<style>
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #0b0c1a;
+    color: white;
+    overflow-x: hidden;
+  }
+
+  /* Particle background */
+  .particles {
+    position: fixed;
+    top:0; left:0;
+    width:100%;
+    height:100%;
+    pointer-events: none;
+    z-index: -1;
+  }
+
+  /* Header */
+  header {
+    background: rgba(20, 20, 40, 0.85);
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  header h1 { margin: 0; color: #ffdd59; }
+  nav a { color: white; margin-left: 20px; text-decoration: none; transition: 0.3s; }
+  nav a:hover { color: #ff79c6; }
+
+  /* Static Hero Section */
+  .hero {
+    background-image: url('https://source.unsplash.com/1600x900/?galaxy,1');
+    background-size: cover;
+    background-position: center;
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+  }
+  .hero h2 {
+    font-size: 48px;
+    margin: 0;
+    text-shadow: 0 0 10px #fff;
+  }
+  .hero p {
+    font-size: 18px;
+    margin-top: 15px;
+    text-shadow: 0 0 8px #fff;
+  }
+
+  /* Card Infinite Carousel */
+  .carousel-container {
+    position: relative;
+    padding: 40px 0;
+    overflow: hidden;
+    background: linear-gradient(180deg, #0b0c1a, #1b003b);
+  }
+  .carousel-track {
+    display: flex;
+    gap: 20px;
+    transition: transform 0.5s linear;
+  }
+  .card {
+    min-width: 250px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255,255,255,0.2);
+    padding: 20px;
+    text-align: center;
+    border-radius: 12px;
+    backdrop-filter: blur(8px);
+    box-shadow: 0 0 20px rgba(138,43,226,0.3);
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 25px rgba(255,121,198,0.7);
+  }
+  .card img {
+    width: 100%;
+    height: 140px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    border: 1px solid rgba(255,255,255,0.3);
+  }
+  .card h3 { font-size: 18px; margin: 10px 0 8px; color: #ffdd59; text-shadow: 0 0 8px #fff; }
+  .card p { font-size: 14px; color: #ccc; }
+
+  /* Carousel Buttons */
+  .carousel-buttons {
+    text-align: center;
+    margin-top: 20px;
+  }
+  .carousel-buttons button {
+    background: rgba(255,255,255,0.2);
+    border: none;
+    color: white;
+    font-size: 18px;
+    padding: 8px 16px;
+    margin: 0 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  .carousel-buttons button:hover { background: rgba(255,255,255,0.5); }
+
+  /* Footer */
+  footer {
+    background: rgba(20, 20, 40, 0.9);
+    color: #fff;
+    text-align: center;
+    padding: 25px 20px;
+  }
+  footer .social a { color: #ff79c6; margin: 0 10px; font-size: 18px; text-decoration: none; }
+  footer .social a:hover { color: #ffdd59; }
+
+  @media (max-width: 768px) { .hero h2 { font-size: 36px; } .hero p { font-size: 16px; } .card { min-width: 200px; } }
+  @media (max-width: 480px) { .card { min-width: 150px; } }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Galaxy Site</h1>
+  <nav>
+    <a href="#">หน้าแรก</a>
+    <a href="#">บริการ</a>
+    <a href="#">เกี่ยวกับ</a>
+    <a href="#">ติดต่อ</a>
+  </nav>
+</header>
+
+<canvas class="particles"></canvas>
+
+<!-- Static Hero Section -->
+<section class="hero">
+  <h2>ยินดีต้อนรับ</h2>
+  <p>สำรวจจักรวาลของเรา</p>
+</section>
+
+<!-- Card Infinite Carousel -->
+<div class="carousel-container">
+  <div class="carousel-track" id="carouselTrack">
+    <div class="card"><img src="png/png12.jpg"><h3>บริการ 1</h3><p>รายละเอียดสั้น ๆ ของบริการ</p></div>
+    <div class="card"><img src="png/png13.jpg"><h3>บริการ 2</h3><p>รายละเอียดสั้น ๆ ของบริการ</p></div>
+    <div class="card"><img src="png/png14.jpg"><h3>บริการ 3</h3><p>รายละเอียดสั้น ๆ ของบริการ</p></div>
+    <div class="card"><img src="png/png15.jpg"><h3>บริการ 4</h3><p>รายละเอียดสั้น ๆ ของบริการ</p></div>
+    <div class="card"><img src="png/png16.jpg"><h3>บริการ 5</h3><p>รายละเอียดสั้น ๆ ของบริการ</p></div>
+    <div class="card"><img src="png/png17.jpg"><h3>บริการ 6</h3><p>รายละเอียดสั้น ๆ ของบริการ</p></div>
+  </div>
+  <div class="carousel-buttons">
+    <button id="prevBtn">❮ ก่อนหน้า</button>
+    <button id="nextBtn">ถัดไป ❯</button>
+  </div>
+</div>
+
+<footer>
+  <p>© 2025 Galaxy Site. All rights reserved.</p>
+  <div class="social">
+    <a href="#">👍</a>
+    <a href="#">🐦</a>
+    <a href="#">📸</a>
+  </div>
+</footer>
+
+<script>
+// Particle JS
+const canvas = document.querySelector('.particles');
+const ctx = canvas.getContext('2d');
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+let stars = [];
+for(let i=0;i<200;i++){
+  stars.push({ x: Math.random()*canvas.width, y: Math.random()*canvas.height, r: Math.random()*1.5, dx: (Math.random()-0.5)*0.2, dy: (Math.random()-0.5)*0.2 });
+}
+function animateStars(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  for(let star of stars){
+    ctx.beginPath();
+    ctx.arc(star.x, star.y, star.r, 0, Math.PI*2);
+    ctx.fillStyle = 'white';
+    ctx.fill();
+    star.x += star.dx;
+    star.y += star.dy;
+    if(star.x < 0) star.x = canvas.width;
+    if(star.x > canvas.width) star.x = 0;
+    if(star.y < 0) star.y = canvas.height;
+    if(star.y > canvas.height) star.y = 0;
+  }
+  requestAnimationFrame(animateStars);
+}
+animateStars();
+window.addEventListener('resize', ()=>{
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+});
+
+// Infinite Card Carousel
+const track = document.getElementById('carouselTrack');
+let cards = Array.from(track.children);
+const cardWidth = cards[0].offsetWidth + 20; // width + gap
+let position = 0;
+
+// Duplicate cards for infinite effect
+cards.forEach(card => {
+  let clone = card.cloneNode(true);
+  track.appendChild(clone);
+});
+
+function moveNext() {
+  position += cardWidth;
+  track.style.transition = 'transform 0.5s linear';
+  track.style.transform = `translateX(-${position}px)`;
+  if(position >= cardWidth * cards.length){
+    setTimeout(() => {
+      track.style.transition = 'none';
+      position = 0;
+      track.style.transform = `translateX(-${position}px)`;
+    }, 510);
+  }
+}
+function movePrev() {
+  position -= cardWidth;
+  if(position < 0) {
+    track.style.transition = 'none';
+    position = cardWidth * cards.length;
+    track.style.transform = `translateX(-${position}px)`;
+    setTimeout(() => { movePrev(); }, 10);
+    return;
+  }
+  track.style.transition = 'transform 0.5s linear';
+  track.style.transform = `translateX(-${position}px)`;
+}
+
+// Auto move every 2.5s
+let autoMove = setInterval(moveNext, 2500);
+
+// Buttons
+document.getElementById('nextBtn').addEventListener('click', ()=>{
+  clearInterval(autoMove);
+  moveNext();
+  autoMove = setInterval(moveNext, 2500);
+});
+document.getElementById('prevBtn').addEventListener('click', ()=>{
+  clearInterval(autoMove);
+  movePrev();
+  autoMove = setInterval(moveNext, 2500);
+});
+</script>
+
+</body>
+</html>

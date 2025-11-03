@@ -1,0 +1,703 @@
+
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Layout Final - Interactive & Responsive</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background-attachment: fixed;
+            padding: 20px;
+            min-height: 100vh;
+            animation: backgroundShift 10s ease-in-out infinite alternate;
+        }
+        
+        @keyframes backgroundShift {
+            0% { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+            100% { background: linear-gradient(135deg, #764ba2 0%, #667eea 100%); }
+        }
+        
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #2d3748 0%, #1a202c 100%);
+            height: 50px;
+            width: 100%;
+            border-radius: 8px 8px 0 0;
+            position: relative;
+            backdrop-filter: blur(10px);
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: #fc8181;
+            box-shadow: 20px 0 #f6e05e, 40px 0 #68d391;
+            animation: pulse 2s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: translateY(-50%) scale(1); }
+            50% { opacity: 0.7; transform: translateY(-50%) scale(1.1); }
+        }
+        
+        /* Main Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            min-height: 600px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+            border-radius: 8px;
+            overflow: hidden;
+            animation: containerFloat 6s ease-in-out infinite;
+        }
+        
+        @keyframes containerFloat {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-5px); }
+        }
+        
+        /* Content Area */
+        .content-wrapper {
+            display: flex;
+            padding: 20px;
+            gap: 20px;
+        }
+        
+        .main-content {
+            flex: 2;
+            height: auto;
+        }
+        
+        .right-column {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .navbar {
+            background-color: transparent;
+            height: 40px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            padding: 0;
+            gap: 10px;
+        }
+        
+        .nav-item {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            height: 32px;
+            width: 80px;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 12px;
+            font-weight: 600;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+        }
+        
+        .nav-item:first-child {
+            background: linear-gradient(135deg, #4299e1 0%, #3182ce 100%);
+        }
+        
+        .nav-item:nth-child(2) {
+            background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
+        }
+        
+        .nav-item:nth-child(3) {
+            background: linear-gradient(135deg, #ed8936 0%, #dd6b20 100%);
+        }
+        
+        .nav-item:last-child {
+            background: linear-gradient(135deg, #e53e3e 0%, #c53030 100%);
+        }
+        
+        .nav-item:hover {
+            transform: translateY(-2px) scale(1.05);
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+            filter: brightness(1.1);
+        }
+        
+        .nav-item:active {
+            transform: translateY(0) scale(0.98);
+        }
+        
+        .content-area {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            height: 250px;
+            border-radius: 6px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            color: white;
+            padding: 25px;
+        }
+        
+        .content-title {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .content-description {
+            font-size: 16px;
+            line-height: 1.6;
+            opacity: 0.9;
+            max-width: 80%;
+        }
+        
+        .content-area::before,
+        .content-area::after {
+            display: none;
+        }
+        
+        .sidebar {
+            flex: 1;
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            height: 250px;
+            border-radius: 6px;
+            position: relative;
+            padding: 15px;
+            color: #2d3748;
+            overflow: hidden;
+        }
+        
+        .sidebar-title {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: #2d3748;
+        }
+        
+        .sidebar-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .sidebar-list li {
+            padding: 6px 10px;
+            margin-bottom: 6px;
+            background-color: rgba(255,255,255,0.4);
+            border-radius: 4px;
+            font-size: 13px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        
+        .sidebar-list li:hover {
+            background-color: rgba(255,255,255,0.7);
+            transform: translateX(5px) scale(1.01);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .sidebar-list li:active {
+            transform: translateX(5px) scale(0.99);
+        }
+        
+        .sidebar::before,
+        .sidebar::after {
+            display: none;
+        }
+        
+        /* Chat Box Styles */
+        .chat-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 6px;
+            padding: 15px;
+            height: 280px;
+            display: flex;
+            flex-direction: column;
+            animation: fadeInUp 0.8s ease-out;
+            animation-delay: 0.3s;
+        }
+        
+        .chat-header {
+            color: white;
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .chat-messages {
+            flex: 1;
+            background: rgba(255,255,255,0.9);
+            border-radius: 4px;
+            padding: 10px;
+            margin-bottom: 10px;
+            overflow-y: auto;
+            max-height: 180px;
+        }
+        
+        .message {
+            margin-bottom: 8px;
+            padding: 6px 10px;
+            border-radius: 12px;
+            max-width: 80%;
+            word-wrap: break-word;
+            animation: messageSlide 0.3s ease-out;
+        }
+        
+        .message.user {
+            background: linear-gradient(135deg, #4299e1 0%, #3182ce 100%);
+            color: white;
+            margin-left: auto;
+            text-align: right;
+        }
+        
+        .message.bot {
+            background: linear-gradient(135deg, #e2e8f0 0%, #cbd5e0 100%);
+            color: #2d3748;
+        }
+        
+        @keyframes messageSlide {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .chat-input-container {
+            display: flex;
+            gap: 8px;
+        }
+        
+        .chat-input {
+            flex: 1;
+            padding: 8px 12px;
+            border: none;
+            border-radius: 20px;
+            background: rgba(255,255,255,0.9);
+            font-size: 14px;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+        
+        .chat-input:focus {
+            background: white;
+            box-shadow: 0 0 0 2px rgba(255,255,255,0.5);
+            transform: scale(1.02);
+        }
+        
+        .chat-send-btn {
+            padding: 8px 16px;
+            background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
+            color: white;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .chat-send-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(72, 187, 120, 0.4);
+            filter: brightness(1.1);
+        }
+        
+        .chat-send-btn:active {
+            transform: scale(0.98);
+        }
+        
+        /* Grid Section - ย้ายมาอยู่ใน main content */
+        .grid-section {
+            padding: 20px 0 0 0;
+        }
+        
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 12px;
+        }
+        
+        .grid-item {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            height: 120px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-weight: 600;
+            text-align: center;
+            padding: 15px;
+        }
+        
+        .grid-item:hover {
+            transform: translateY(-8px) rotate(2deg);
+            box-shadow: 0 12px 40px rgba(102, 126, 234, 0.5);
+            filter: brightness(1.1);
+            z-index: 10;
+        }
+        
+        .grid-item:active {
+            transform: translateY(-4px) rotate(1deg) scale(0.95);
+        }
+        
+        .grid-item:nth-child(even):hover {
+            transform: translateY(-8px) rotate(-2deg);
+        }
+        
+        .grid-item::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s;
+        }
+        
+        .grid-item:hover::after {
+            left: 100%;
+        }
+        
+        .grid-item::before {
+            display: none;
+        }
+        
+        .grid-item:nth-child(1) { background: linear-gradient(135deg, #4299e1 0%, #3182ce 100%); }
+        .grid-item:nth-child(2) { background: linear-gradient(135deg, #48bb78 0%, #38a169 100%); }
+        .grid-item:nth-child(3) { background: linear-gradient(135deg, #ed8936 0%, #dd6b20 100%); }
+        .grid-item:nth-child(4) { background: linear-gradient(135deg, #e53e3e 0%, #c53030 100%); }
+        .grid-item:nth-child(5) { background: linear-gradient(135deg, #9f7aea 0%, #805ad5 100%); }
+        .grid-item:nth-child(6) { background: linear-gradient(135deg, #38b2ac 0%, #319795 100%); }
+        .grid-item:nth-child(7) { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); }
+        .grid-item:nth-child(8) { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); }
+        .grid-item:nth-child(9) { background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); }
+        .grid-item:nth-child(10) { background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .content-wrapper {
+                flex-direction: column;
+            }
+            
+            .grid-container {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 15px;
+            }
+            
+            .navbar {
+                gap: 5px;
+            }
+            
+            .nav-item {
+                width: 60px;
+                font-size: 11px;
+            }
+            
+            .chat-box {
+                height: 250px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+            
+            .grid-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .content-title {
+                font-size: 22px;
+            }
+            
+            .content-description {
+                font-size: 14px;
+            }
+            
+            .chat-box {
+                height: 220px;
+            }
+        }
+        
+        /* Loading Animation */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .nav-item, .content-area, .sidebar, .grid-item, .chat-box {
+            animation: fadeInUp 0.6s ease-out;
+        }
+        
+        .nav-item:nth-child(1) { animation-delay: 0.1s; }
+        .nav-item:nth-child(2) { animation-delay: 0.2s; }
+        .nav-item:nth-child(3) { animation-delay: 0.3s; }
+        .nav-item:nth-child(4) { animation-delay: 0.4s; }
+        
+        .grid-item:nth-child(1) { animation-delay: 0.1s; }
+        .grid-item:nth-child(2) { animation-delay: 0.2s; }
+        .grid-item:nth-child(3) { animation-delay: 0.3s; }
+        .grid-item:nth-child(4) { animation-delay: 0.4s; }
+        .grid-item:nth-child(5) { animation-delay: 0.5s; }
+        .grid-item:nth-child(6) { animation-delay: 0.6s; }
+        .grid-item:nth-child(7) { animation-delay: 0.7s; }
+        .grid-item:nth-child(8) { animation-delay: 0.8s; }
+        .grid-item:nth-child(9) { animation-delay: 0.9s; }
+        .grid-item:nth-child(10) { animation-delay: 1.0s; }
+    </style>
+</head>
+<body>
+    <div class="header"></div>
+    
+    <div class="container">
+        <div class="content-wrapper">
+            <div class="main-content">
+                <div class="navbar">
+                    <div class="nav-item" onclick="showAlert('หน้าหลัก')">หน้าหลัก</div>
+                    <div class="nav-item" onclick="showAlert('โปรเจกต์')">โปรเจกต์</div>
+                    <div class="nav-item" onclick="showAlert('ติดต่อ')">ติดต่อ</div>
+                    <div class="nav-item" onclick="showAlert('เกี่ยวกับ')">เกี่ยวกับ</div>
+                </div>
+                <div class="content-area" onclick="showAlert('คลิกที่เนื้อหาหลัก!')">
+                    <div class="content-title">ยินดีต้อนรับสู่เว็บไซต์ของเรา</div>
+                    <div class="content-description">
+                        เราเป็นบริษัทที่เชี่ยวชาญในการพัฒนาเว็บไซต์และแอปพลิเคชันสมัยใหม่ 
+                        ด้วยทีมงานมืออาชีพและเทคโนโลยีล่าสุด เพื่อสร้างประสบการณ์ที่ยอดเยี่ยม
+                        ให้กับผู้ใช้งานของคุณ
+                    </div>
+                </div>
+                
+                <div class="grid-section">
+                    <div class="grid-container">
+                        <div class="grid-item" onclick="showAlert('แอปมือถือ')">
+                            <div style="font-size: 24px;">📱</div>
+                            <div>แอปมือถือ</div>
+                        </div>
+                        <div class="grid-item" onclick="showAlert('เว็บไซต์')">
+                            <div style="font-size: 24px;">🌐</div>
+                            <div>เว็บไซต์</div>
+                        </div>
+                        <div class="grid-item" onclick="showAlert('ดีไซน์')">
+                            <div style="font-size: 24px;">🎨</div>
+                            <div>ดีไซน์</div>
+                        </div>
+                        <div class="grid-item" onclick="showAlert('ประสิทธิภาพ')">
+                            <div style="font-size: 24px;">⚡</div>
+                            <div>ประสิทธิภาพ</div>
+                        </div>
+                        <div class="grid-item" onclick="showAlert('ความปลอดภัย')">
+                            <div style="font-size: 24px;">🔒</div>
+                            <div>ความปลอดภัย</div>
+                        </div>
+                        <div class="grid-item" onclick="showAlert('วิเคราะห์ข้อมูล')">
+                            <div style="font-size: 24px;">📊</div>
+                            <div>วิเคราะห์ข้อมูล</div>
+                        </div>
+                        <div class="grid-item" onclick="showAlert('คลาวด์')">
+                            <div style="font-size: 24px;">☁️</div>
+                            <div>คลาวด์</div>
+                        </div>
+                        <div class="grid-item" onclick="showAlert('AI & ML')">
+                            <div style="font-size: 24px;">🤖</div>
+                            <div>AI & ML</div>
+                        </div>
+                        <div class="grid-item" onclick="showAlert('ธุรกิจ')">
+                            <div style="font-size: 24px;">💼</div>
+                            <div>ธุรกิจ</div>
+                        </div>
+                        <div class="grid-item" onclick="showAlert('การตลาด')">
+                            <div style="font-size: 24px;">🎯</div>
+                            <div>การตลาด</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="right-column">
+                <div class="sidebar">
+                    <div class="sidebar-title">เมนูด่วน</div>
+                    <ul class="sidebar-list">
+                        <li onclick="showAlert('แดชบอร์ด')">📊 แดชบอร์ด</li>
+                        <li onclick="showAlert('ไฟล์ของฉัน')">📁 ไฟล์ของฉัน</li>
+                        <li onclick="showAlert('ทีมงาน')">👥 ทีมงาน</li>
+                        <li onclick="showAlert('ตั้งค่า')">⚙️ ตั้งค่า</li>
+                        <li onclick="showAlert('สถิติ')">📈 สถิติ</li>
+                        <li onclick="showAlert('ข้อความ')">💬 ข้อความ</li>
+                    </ul>
+                </div>
+                
+                <div class="chat-box">
+                    <div class="chat-header">
+                        💬 แชทด่วน
+                    </div>
+                    <div class="chat-messages" id="chatMessages">
+                        <div class="message bot">สวัสดีครับ! มีอะไรให้ช่วยไหมครับ?</div>
+                        <div class="message user">สวัสดีครับ</div>
+                        <div class="message bot">วันนี้เป็นอย่างไรบ้างครับ?</div>
+                    </div>
+                    <div class="chat-input-container">
+                        <input type="text" class="chat-input" placeholder="พิมพ์ข้อความ..." id="chatInput" onkeypress="handleChatKeyPress(event)">
+                        <button class="chat-send-btn" onclick="sendMessage()">ส่ง</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showAlert(message) {
+            alert('คุณคลิกที่: ' + message);
+        }
+        
+        // Chat functionality
+        function sendMessage() {
+            const input = document.getElementById('chatInput');
+            const messages = document.getElementById('chatMessages');
+            const messageText = input.value.trim();
+            
+            if (messageText) {
+                // Add user message
+                const userMessage = document.createElement('div');
+                userMessage.className = 'message user';
+                userMessage.textContent = messageText;
+                messages.appendChild(userMessage);
+                
+                // Clear input
+                input.value = '';
+                
+                // Simulate bot response
+                setTimeout(() => {
+                    const botMessage = document.createElement('div');
+                    botMessage.className = 'message bot';
+                    botMessage.textContent = getBotResponse(messageText);
+                    messages.appendChild(botMessage);
+                    
+                    // Scroll to bottom
+                    messages.scrollTop = messages.scrollHeight;
+                }, 500);
+                
+                // Scroll to bottom
+                messages.scrollTop = messages.scrollHeight;
+            }
+        }
+        
+        function handleChatKeyPress(event) {
+            if (event.key === 'Enter') {
+                sendMessage();
+            }
+        }
+        
+        function getBotResponse(userMessage) {
+            const responses = [
+                'ขอบคุณสำหรับข้อความครับ!',
+                'เข้าใจแล้วครับ มีอะไรเพิ่มเติมไหมครับ?',
+                'ดีมากเลยครับ!',
+                'ได้เลยครับ ผมจะช่วยคุณ',
+                'น่าสนใจมากเลยครับ!',
+                'คุณพูดถูกเลยครับ',
+                'ขอบคุณที่แบ่งปันครับ!'
+            ];
+            
+            if (userMessage.toLowerCase().includes('สวัสดี')) {
+                return 'สวัสดีครับ! ยินดีที่ได้รู้จักครับ';
+            } else if (userMessage.toLowerCase().includes('ขอบคุณ')) {
+                return 'ยินดีครับ! มีอะไรให้ช่วยเหลืออีกไหมครับ?';
+            } else if (userMessage.toLowerCase().includes('ลาก่อน')) {
+                return 'ลาก่อนครับ! แล้วเจอกันใหม่นะครับ';
+            }
+            
+            return responses[Math.floor(Math.random() * responses.length)];
+        }
+        
+        // Add sparkle effect on mouse move
+        document.addEventListener('mousemove', function(e) {
+            if (Math.random() > 0.95) {
+                createSparkle(e.clientX, e.clientY);
+            }
+        });
+        
+        function createSparkle(x, y) {
+            const sparkle = document.createElement('div');
+            sparkle.style.position = 'fixed';
+            sparkle.style.left = x + 'px';
+            sparkle.style.top = y + 'px';
+            sparkle.style.width = '4px';
+            sparkle.style.height = '4px';
+            sparkle.style.background = 'white';
+            sparkle.style.borderRadius = '50%';
+            sparkle.style.pointerEvents = 'none';
+            sparkle.style.zIndex = '9999';
+            sparkle.style.animation = 'sparkle 1s ease-out forwards';
+            
+            document.body.appendChild(sparkle);
+            
+            setTimeout(() => {
+                sparkle.remove();
+            }, 1000);
+        }
+        
+        // Add sparkle animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes sparkle {
+                0% {
+                    opacity: 1;
+                    transform: scale(0);
+                }
+                50% {
+                    opacity: 1;
+                    transform: scale(1);
+                }
+                100% {
+                    opacity: 0;
+                    transform: scale(0);
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>

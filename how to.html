@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Basic HTML Develop</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: linear-gradient(180deg, #eaf4ff 0%, #ffffff 100%);
+      color: #222;
+      line-height: 1.7;
+    }
+
+    h1, h2 {
+      margin: 0 0 10px;
+    }
+
+    a {
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    /* ---------- Header ---------- */
+    header {
+      background: linear-gradient(135deg, #0078d7, #0099ff);
+      color: white;
+      text-align: center;
+      padding: 50px 20px 40px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      position: relative;
+    }
+
+    header img {
+      width: 80px;
+      height: 80px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 3px solid #fff;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+      margin-bottom: 15px;
+    }
+
+    header h1 {
+      font-size: 2rem;
+      letter-spacing: 0.8px;
+    }
+
+    header a {
+      color: #ffeb3b;
+      text-decoration: underline;
+    }
+
+    /* ---------- Navigation ---------- */
+    nav {
+      background-color: #222;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    nav a {
+      color: white;
+      padding: 12px 25px;
+      border-radius: 4px;
+      font-weight: 500;
+    }
+
+    nav a:hover {
+      background-color: #0078d7;
+      transform: translateY(-2px);
+    }
+
+    /* ---------- Main ---------- */
+    main {
+      max-width: 1000px;
+      margin: 50px auto;
+      padding: 0 20px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+    }
+
+    section {
+      background-color: #fff;
+      padding: 25px;
+      border-radius: 14px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      text-align: center;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.6s ease;
+    }
+
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    section h2 {
+      color: #0078d7;
+      border-bottom: 2px solid #0078d7;
+      display: inline-block;
+      padding-bottom: 4px;
+      margin-bottom: 15px;
+      font-size: 1.3rem;
+    }
+
+    /* ---------- Image ---------- */
+    img {
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      max-width: 100%;
+      height: auto;
+      margin-top: 10px;
+    }
+
+    /* ---------- Table ---------- */
+    table {
+      margin: 0 auto;
+      border-collapse: collapse;
+      width: 90%;
+    }
+
+    th, td {
+      border: 1px solid #ddd;
+      padding: 12px;
+    }
+
+    th {
+      background-color: #0078d7;
+      color: white;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+
+    tr:hover {
+      background-color: #eaf4ff;
+    }
+
+    /* ---------- Menu ---------- */
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    ul li {
+      margin: 8px 0;
+    }
+
+    ul li a {
+      color: #0078d7;
+      font-weight: 500;
+    }
+
+    ul li a:hover {
+      text-decoration: underline;
+    }
+
+    /* ---------- Footer ---------- */
+    footer {
+      background: #0078d7;
+      color: white;
+      text-align: center;
+      padding: 20px 10px;
+      font-size: 0.95rem;
+      margin-top: 60px;
+    }
+
+    /* ---------- Back to Top Button ---------- */
+    #backToTop {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      background-color: #0078d7;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      font-size: 22px;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      transition: all 0.3s ease;
+      display: none;
+      z-index: 99;
+    }
+
+    #backToTop:hover {
+      background-color: #005fa3;
+      transform: translateY(-3px);
+    }
+
+    /* ---------- Responsive ---------- */
+    @media (max-width: 768px) {
+      main {
+        grid-template-columns: 1fr;
+        margin: 30px auto;
+      }
+
+      header h1 {
+        font-size: 1.5rem;
+      }
+
+      nav a {
+        padding: 10px 18px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <img src="https://cdn-icons-png.flaticon.com/512/5968/5968267.png" alt="HTML Logo">
+    <h1>How to... Basic HTML Develop</h1>
+    <p>
+      เรียนรู้ HTML เบื้องต้นได้ที่
+      <a href="https://www.w3schools.com" target="_blank">www.w3schools.com</a>
+    </p>
+  </header>
+
+  <nav>
+    <a href="#link">Link</a>
+    <a href="#image">Image</a>
+    <a href="#table">Table</a>
+    <a href="#menu">Menu</a>
+    <a href="#color">Set Color</a>
+  </nav>
+
+  <main>
+    <section id="link">
+      <h2>1. Link (ลิงก์)</h2>
+      <p>ตัวอย่างลิงก์:</p>
+      <a href="https://www.w3schools.com" target="_blank">เยี่ยมชม W3Schools</a>
+    </section>
+
+    <section id="image">
+      <h2>2. Image (รูปภาพ)</h2>
+      <img src="png/1.jpg" alt="Example Image" width="400">
+    </section>
+
+    <section id="table">
+      <h2>3. Table (ตาราง)</h2>
+      <table>
+        <tr>
+          <th>ชื่อ</th>
+          <th>อายุ</th>
+        </tr>
+        <tr>
+          <td>สมชาย</td>
+          <td>25</td>
+        </tr>
+        <tr>
+          <td>สมหญิง</td>
+          <td>22</td>
+        </tr>
+      </table>
+    </section>
+
+    <section id="menu">
+      <h2>4. Menu (เมนู)</h2>
+      <ul>
+        <li><a href="#">หน้าแรก</a></li>
+        <li><a href="#">เกี่ยวกับเรา</a></li>
+        <li><a href="#">ติดต่อ</a></li>
+      </ul>
+    </section>
+
+    <section id="color">
+      <h2>5. Set Color (ตั้งค่าสี)</h2>
+      <p style="color: blue;">นี่คือข้อความสีน้ำเงิน</p>
+      <p style="background-color: lightyellow;">นี่คือพื้นหลังสีเหลืองอ่อน</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>สร้างโดย: Setthapong Nakon © 2025</p>
+  </footer>
+
+  <!-- Back to Top Button -->
+  <button id="backToTop">↑</button>
+
+  <script>
+    // Section animation
+    const sections = document.querySelectorAll('section');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.2 });
+    sections.forEach(section => observer.observe(section));
+
+    // Back to Top button
+    const btn = document.getElementById('backToTop');
+    window.onscroll = () => {
+      btn.style.display = window.scrollY > 300 ? 'block' : 'none';
+    };
+    btn.onclick = () => window.scrollTo({ top: 0, behavior: 'smooth' });
+  </script>
+</body>
+
+</html>

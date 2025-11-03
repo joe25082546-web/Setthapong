@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>สมัครเรียน - MCRU</title>
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Kanit', sans-serif;
+      background-color: #f5f7fa;
+    }
+
+    h2 {
+      text-align: center;
+      margin-top: 30px;
+      margin-bottom: 20px;
+      font-weight: 700;
+      color: #002b5c;
+    }
+
+    table {
+      background: #fff;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+    }
+
+    th {
+      background-color: #002b5c;
+      color: #fff;
+      text-align: center;
+    }
+
+    td {
+      text-align: center;
+      vertical-align: middle;
+    }
+
+    .btn-apply {
+      background-color: #007bff;
+      color: white;
+      border-radius: 20px;
+      font-size: 0.9rem;
+    }
+
+    .btn-apply:hover {
+      background-color: #0056b3;
+      color: #fff;
+    }
+
+    footer {
+      text-align: center;
+      background: #002b5c;
+      color: white;
+      padding: 15px;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container my-5">
+    <h2>สาขาวิชาที่เปิดรับสมัคร ภาคปกติ ระดับปริญญาตรี ปีการศึกษา 2569</h2>
+
+    <div class="table-responsive">
+      <table class="table table-bordered table-striped">
+        <thead>
+          <tr>
+            <th>ลำดับ</th>
+            <th>ระดับการศึกษา</th>
+            <th>หลักสูตร</th>
+            <th>สาขาวิชา</th>
+            <th>คณะ</th>
+            <th>แผนรับ</th>
+            <th>รายงานตัว</th>
+            <th>คงเหลือ</th>
+            <th>สมัคร</th>
+            <th>รายละเอียด</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- ✅ แถวข้อมูลสาขาวิชาทั้งหมด -->
+          <tr><td>1</td><td>ปริญญาตรี 4 ปี</td><td>ครุศาสตรบัณฑิต</td><td>ภาษาอังกฤษ</td><td>ครุศาสตร์</td><td>60</td><td>17</td><td>43</td><td>66</td><td><a href="apply_form.html?major=ภาษาอังกฤษ" class="btn btn-apply btn-sm">สมัครเรียน</a></td></tr>
+          <tr><td>2</td><td>ปริญญาตรี 4 ปี</td><td>ครุศาสตรบัณฑิต</td><td>เทคโนโลยีดิจิทัลเพื่อการศึกษา</td><td>ครุศาสตร์</td><td>30</td><td>9</td><td>21</td><td>18</td><td><a href="apply_form.html?major=เทคโนโลยีดิจิทัลเพื่อการศึกษา" class="btn btn-apply btn-sm">สมัครเรียน</a></td></tr>
+          <tr><td>3</td><td>ปริญญาตรี 4 ปี</td><td>ครุศาสตรบัณฑิต</td><td>การศึกษาปฐมวัย</td><td>ครุศาสตร์</td><td>60</td><td>49</td><td>11</td><td>269</td><td><a href="apply_form.html?major=การศึกษาปฐมวัย" class="btn btn-apply btn-sm">สมัครเรียน</a></td></tr>
+          <tr><td>4</td><td>ปริญญาตรี 4 ปี</td><td>ครุศาสตรบัณฑิต</td><td>พลศึกษา</td><td>ครุศาสตร์</td><td>60</td><td>43</td><td>17</td><td>175</td><td><a href="apply_form.html?major=พลศึกษา" class="btn btn-apply btn-sm">สมัครเรียน</a></td></tr>
+          <tr><td>5</td><td>ปริญญาตรี 4 ปี</td><td>ครุศาสตรบัณฑิต</td><td>คณิตศาสตร์</td><td>วิทยาศาสตร์และเทคโนโลยี</td><td>60</td><td>19</td><td>41</td><td>69</td><td><a href="apply_form.html?major=คณิตศาสตร์" class="btn btn-apply btn-sm">สมัครเรียน</a></td></tr>
+          <tr><td>6</td><td>ปริญญาตรี 4 ปี</td><td>ครุศาสตรบัณฑิต</td><td>คอมพิวเตอร์ศึกษา</td><td>วิทยาศาสตร์และเทคโนโลยี</td><td>30</td><td>8</td><td>22</td><td>19</td><td><a href="apply_form.html?major=คอมพิวเตอร์ศึกษา" class="btn btn-apply btn-sm">สมัครเรียน</a></td></tr>
+          <tr><td>7</td><td>ปริญญาตรี 4 ปี</td><td>ครุศาสตรบัณฑิต</td><td>วิทยาศาสตร์ทั่วไป</td><td>วิทยาศาสตร์และเทคโนโลยี</td><td>30</td><td>10</td><td>20</td><td>26</td><td><a href="apply_form.html?major=วิทยาศาสตร์ทั่วไป" class="btn btn-apply btn-sm">สมัครเรียน</a></td></tr>
+          <tr><td>8</td><td>ปริญญาตรี 4 ปี</td><td>ครุศาสตรบัณฑิต</td><td>ชีววิทยา</td><td>วิทยาศาสตร์และเทคโนโลยี</td><td>30</td><td>3</td><td>27</td><td>13</td><td><a href="apply_form.html?major=ชีววิทยา" class="btn btn-apply btn-sm">สมัครเรียน</a></td></tr>
+          <tr><td>9</td><td>ปริญญาตรี 4 ปี</td><td>วิทยาศาสตรบัณฑิต</td><td>วิทยาการคอมพิวเตอร์</td><td>วิทยาศาสตร์และเทคโนโลยี</td><td>30</td><td>9</td><td>21</td><td>16</td><td><a href="apply_form.html?major=วิทยาการคอมพิวเตอร์" class="btn btn-apply btn-sm">สมัครเรียน</a></td></tr>
+          <tr><td>10</td><td>ปริญญาตรี 4 ปี</td><td>วิทยาศาสตรบัณฑิต</td><td>สัตวศาสตร์</td><td>วิทยาศาสตร์และเทคโนโลยี</td><td>30</td><td>16</td><td>14</td><td>48</td><td><a href="apply_form.html?major=สัตวศาสตร์" class="btn btn-apply btn-sm">สมัครเรียน</a></td></tr>
+          <tr><td>11</td><td>ปริญญาตรี 4 ปี</td><td>วิทยาศาสตรบัณฑิต</td><td>เทคโนโลยีและนวัตกรรมคอมพิวเตอร์</td><td>วิทยาศาสตร์และเทคโนโลยี</td><td>25</td><td>4</td><td>21</td><td>10</td><td><a href="apply_form.html?major=เทคโนโลยีและนวัตกรรมคอมพิวเตอร์" class="btn btn-apply btn-sm">สมัครเรียน</a></td></tr>
+          <tr><td>12</td><td>ปริญญาตรี 4 ปี</td><td>วิทยาศาสตรบัณฑิต</td><td>เทคโนโลยีการแปรรูปอาหาร</td><td>วิทยาศาสตร์และเทคโนโลยี</td><td>20</td><td>1</td><td>19</td><td>11</td><td><a href="apply_form.html?major=เทคโนโลยีการแปรรูปอาหาร" class="btn btn-apply btn-sm">สมัครเรียน</a></td></tr>
+          <tr><td>13</td><td>ปริญญาตรี 4 ปี</td><td>ครุศาสตรบัณฑิต</td><td>ภาษาไทย</td><td>มนุษยศาสตร์และสังคมศาสตร์</td><td>60</td><td>21</td><td>39</td><td>103</td><td><a href="apply_form.html?major=ภาษาไทย" class="btn btn-apply btn-sm">สมัครเรียน</a></td></tr>
+          <tr><td>14</td><td>ปริญญาตรี 4 ปี</td><td>ครุศาสตรบัณฑิต</td><td>ภาษาจีน</td><td>มนุษยศาสตร์และสังคมศาสตร์</td><td>30</td><td>22</td><td>8</td><td>42</td><td><a href="apply_form.html?major=ภาษาจีน" class="btn btn-apply btn-sm">สมัครเรียน</a></td></tr>
+          <tr><td>15</td><td>ปริญญาตรี 4 ปี</td><td>ครุศาสตรบัณฑิต</td><td>ดนตรีศึกษา</td><td>มนุษยศาสตร์และสังคมศาสตร์</td><td>30</td><td>9</td><td>21</td><td>26</td><td><a href="apply_form.html?major=ดนตรีศึกษา" class="btn btn-apply btn-sm">สมัครเรียน</a></td></tr>
+          <tr><td>16</td><td>ปริญญาตรี 4 ปี</td><td>ครุศาสตรบัณฑิต</td><td>สังคมศึกษา</td><td>มนุษยศาสตร์และสังคมศาสตร์</td><td>50</td><td>25</td><td>25</td><td>92</td><td><a href="apply_form.html?major=สังคมศึกษา" class="btn btn-apply btn-sm">สมัครเรียน</a></td></tr>
+          <tr><td>17</td><td>ปริญญาตรี 4 ปี</td><td>ครุศาสตรบัณฑิต</td><td>ศิลปศึกษา</td><td>มนุษยศาสตร์และสังคมศาสตร์</td><td>30</td><td>6</td><td>24</td><td>27</td><td><a href="apply_form.html?major=ศิลปศึกษา" class="btn btn-apply btn-sm">สมัครเรียน</a></td></tr>
+          <tr><td>18</td><td>ปริญญาตรี 4 ปี</td><td>รัฐประศาสนศาสตรบัณฑิต</td><td>รัฐประศาสนศาสตร์</td><td>มนุษยศาสตร์และสังคมศาสตร์</td><td>80</td><td>51</td><td>29</td><td>137</td><td><a href="apply_form.html?major=รัฐประศาสนศาสตร์" class="btn btn-apply btn-sm">สมัครเรียน</a></td></tr>
+          <tr><td>19</td><td>ปริญญาตรี 4 ปี</td><td>ศิลปศาสตรบัณฑิต</td><td>ภาษาอังกฤษธุรกิจ</td><td>มนุษยศาสตร์และสังคมศาสตร์</td><td>30</td><td>4</td><td>26</td><td>15</td><td><a href="apply_form.html?major=ภาษาอังกฤษธุรกิจ" class="btn btn-apply btn-sm">สมัครเรียน</a></td></tr>
+          <tr><td>20</td><td>ปริญญาตรี 4 ปี</td><td>ศิลปศาสตรบัณฑิต</td><td>การจัดการชุมชน</td><td>มนุษยศาสตร์และสังคมศาสตร์</td><td>30</td><td>3</td><td>27</td><td>20</td><td><a href="apply_form.html?major=การจัดการชุมชน" class="btn btn-apply btn-sm">สมัครเรียน</a></td></tr>
+          <tr><td>21</td><td>ปริญญาตรี 4 ปี</td><td>นิติศาสตรบัณฑิต</td><td>นิติศาสตร์</td><td>มนุษยศาสตร์และสังคมศาสตร์</td><td>40</td><td>32</td><td>8</td><td>78</td><td><a href="apply_form.html?major=นิติศาสตร์" class="btn btn-apply btn-sm">สมัครเรียน</a></td></tr>
+          <tr><td>22</td><td>ปริญญาตรี 4 ปี</td><td>นิเทศศาสตรบัณฑิต</td><td>นิเทศศาสตร์และนวัตกรรมสื่อ</td><td>วิทยาการจัดการ</td><td>30</td><td>9</td><td>21</td><td>26</td><td><a href="apply_form.html?major=นิเทศศาสตร์และนวัตกรรมสื่อ" class="btn btn-apply btn-sm">สมัครเรียน</a></td></tr>
+          <tr><td>23</td><td>ปริญญาตรี 4 ปี</td><td>บริหารธุรกิจบัณฑิต</td><td>การจัดการทั่วไป</td><td>วิทยาการจัดการ</td><td>30</td><td>20</td><td>10</td><td>46</td><td><a href="apply_form.html?major=การจัดการทั่วไป" class="btn btn-apply btn-sm">สมัครเรียน</a></td></tr>
+          <tr><td>24</td><td>ปริญญาตรี 4 ปี</td><td>บริหารธุรกิจบัณฑิต</td><td>การจัดการธุรกิจดิจิทัล</td><td>วิทยาการจัดการ</td><td>30</td><td>8</td><td>22</td><td>17</td><td><a href="apply_form.html?major=การจัดการธุรกิจดิจิทัล" class="btn btn-apply btn-sm">สมัครเรียน</a></td></tr>
+          <tr><td>25</td><td>ปริญญาตรี 4 ปี</td><td>ศิลปศาสตรบัณฑิต</td><td>การท่องเที่ยวและการบริการ</td><td>วิทยาการจัดการ</td><td>30</td><td>12</td><td>18</td><td>34</td><td><a href="apply_form.html?major=การท่องเที่ยวและการบริการ" class="btn btn-apply btn-sm">สมัครเรียน</a></td></tr>
+          <tr><td>26</td><td>ปริญญาตรี 4 ปี</td><td>บริหารธุรกิจบัณฑิต</td><td>นวัตกรรมการตลาด หมู่ 1</td><td>วิทยาการจัดการ</td><td>30</td><td>5</td><td>25</td><td>10</td><td><a href="apply_form.html?major=นวัตกรรมการตลาดหมู่1" class="btn btn-apply btn-sm">สมัครเรียน</a></td></tr>
+          <tr><td>27</td><td>ปริญญาตรี 4 ปี</td><td>บริหารธุรกิจบัณฑิต</td><td>นวัตกรรมการตลาด หมู่ 2 การจัดการธุรกิจการค้าสมัยใหม่</td><td>วิทยาการจัดการ</td><td>20</td><td>14</td><td>6</td><td>24</td><td><a href="apply_form.html?major=นวัตกรรมการตลาดหมู่2" class="btn btn-apply btn-sm">สมัครเรียน</a></td></tr>
+          <tr><td>28</td><td>ปริญญาตรี 4 ปี</td><td>บัญชีบัณฑิต</td><td>การบัญชี</td><td>วิทยาการจัดการ</td><td>30</td><td>7</td><td>23</td><td>45</td><td><a href="apply_form.html?major=การบัญชี" class="btn btn-apply btn-sm">สมัครเรียน</a></td></tr>
+          <tr><td>29</td><td>ปริญญาตรี 4 ปี</td><td>ศิลปศาสตรบัณฑิต</td><td>อุตสาหกรรมการท่องเที่ยวเชิงสร้างสรรค์</td><td>วิทยาการจัดการ</td><td>30</td><td>8</td><td>22</td><td>13</td><td><a href="apply_form.html?major=อุตสาหกรรมการท่องเที่ยวเชิงสร้างสรรค์" class="btn btn-apply btn-sm">สมัครเรียน</a></td></tr>
+          <tr><td>30</td><td>ปริญญาตรี 4 ปี</td><td>ศิลปศาสตรบัณฑิต</td><td>การออกแบบนิเทศศิลป์</td><td>วิทยาการจัดการ</td><td>30</td><td>10</td><td>20</td><td>26</td><td><a href="apply_form.html?major=การออกแบบนิเทศศิลป์" class="btn btn-apply btn-sm">สมัครเรียน</a></td></tr>
+          <tr><td>31</td><td>ปริญญาตรี 4 ปี</td><td>ศิลปศาสตรบัณฑิต</td><td>การออกแบบผลิตภัณฑ์สร้างสรรค์</td><td>วิทยาการจัดการ</td><td>30</td><td>11</td><td>19</td><td>22</td><td><a href="apply_form.html?major=การออกแบบผลิตภัณฑ์สร้างสรรค์" class="btn btn-apply btn-sm">สมัครเรียน</a></td></tr>
+          <tr><td>32</td><td>ปริญญาตรี 4 ปี</td><td>วิทยาศาสตรบัณฑิต</td><td>เทคโนโลยีอาหาร</td><td>วิทยาศาสตร์และเทคโนโลยี</td><td>30</td><td>7</td><td>23</td><td>14</td><td><a href="apply_form.html?major=เทคโนโลยีอาหาร" class="btn btn-apply btn-sm">สมัครเรียน</a></td></tr>
+          <tr><td>33</td><td>ปริญญาตรี 4 ปี</td><td>ศิลปศาสตรบัณฑิต</td><td>การจัดการการท่องเที่ยว</td><td>วิทยาการจัดการ</td><td>30</td><td>4</td><td>26</td><td>12</td><td><a href="apply_form.html?major=การจัดการการท่องเที่ยว" class="btn btn-apply btn-sm">สมัครเรียน</a></td></tr>
+          <tr><td>34</td><td>ปริญญาตรี 4 ปี</td><td>ศิลปศาสตรบัณฑิต</td><td>การจัดการศิลปะและวัฒนธรรม</td><td>มนุษยศาสตร์และสังคมศาสตร์</td><td>30</td><td>5</td><td>25</td><td>17</td><td><a href="apply_form.html?major=การจัดการศิลปะและวัฒนธรรม" class="btn btn-apply btn-sm">สมัครเรียน</a></td></tr>
+          <tr><td>35</td><td>ปริญญาตรี 4 ปี</td><td>ศิลปศาสตรบัณฑิต</td><td>ภาษาอังกฤษเพื่อการสื่อสารสากล</td><td>มนุษยศาสตร์และสังคมศาสตร์</td><td>30</td><td>5</td><td>25</td><td>19</td><td><a href="apply_form.html?major=ภาษาอังกฤษเพื่อการสื่อสารสากล" class="btn btn-apply btn-sm">สมัครเรียน</a></td></tr>
+          <tr><td>36</td><td>ปริญญาตรี 4 ปี</td><td>ศิลปศาสตรบัณฑิต</td><td>ดิจิทัลมีเดีย</td><td>วิทยาการจัดการ</td><td>30</td><td>7</td><td>23</td><td>10</td><td><a href="apply_form.html?major=ดิจิทัลมีเดีย" class="btn btn-apply btn-sm">สมัครเรียน</a></td></tr>
+          <tr><td>37</td><td>ปริญญาตรี 4 ปี</td><td>บัญชีบัณฑิต</td><td>การบัญชีดิจิทัล</td><td>วิทยาการจัดการ</td><td>30</td><td>8</td><td>22</td><td>11</td><td><a href="apply_form.html?major=การบัญชีดิจิทัล" class="btn btn-apply btn-sm">สมัครเรียน</a></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <footer>
+    © 2025 มหาวิทยาลัยราชภัฏหมู่บ้านจอมบึง | ระบบสมัครเรียนออนไลน์
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,250 @@
+<html lang="th">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Wireframe Layout (HTML + CSS Grid)</title>
+<style>
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+:root{
+  --maxw: 1200px;
+  --g: 16px;
+  --g-sm: 10px;
+  --radius: 8px;
+  --ink: #222;
+  --bg: #f5f7f9;
+  --bar: #394047;
+  --card1: #d9dfe5;
+  --card2: #b9c1c9;
+}
+body{
+  font: 16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, sans-serif;
+  color: var(--ink);
+  background: #d0e3e1;
+}
+
+/* ========== Topbar ========== */
+.topbar{
+  background: var(--bar);
+  color: #fff;
+}
+.topbar__inner{
+  margin: 0 auto;
+  max-width: var(--maxw);
+  padding: 12px var(--g);
+  display: flex;
+  align-items: center;
+  gap: var(--g);
+}
+.logo{ font-weight: 700; letter-spacing: .5px; }
+.nav ul{
+  list-style: none; margin: 0; padding: 0;
+  display: flex; gap: 20px;
+}
+.nav a{
+  color: #fff; text-decoration: none; opacity: .9;
+}
+.nav a:hover{ opacity: 1; text-decoration: underline; }
+
+/* ========== Layout ========== */
+.container{
+  margin: 20px auto;
+  max-width: var(--maxw);
+  padding: 0 var(--g);
+  display: grid;
+  gap: var(--g);
+  grid-template-columns: 1.15fr 1.6fr 1fr;
+  grid-template-areas:
+    "hero   hero   rightA"
+    "leftA  article rightA"
+    "leftB  article rightB"
+    "leftB  article rightC";
+}
+
+.hero            { grid-area: hero;    min-height: 180px; }
+.sidebar-feature { grid-area: rightA;  min-height: 220px; }
+.feature-image   { grid-area: leftA;   min-height: 260px; }
+.article         { grid-area: article; min-height: 500px; background: #fff; padding: 18px; }
+.gallery         { grid-area: leftB; }
+.sidebar-box     { grid-area: rightB;  min-height: 120px; }
+.thumb-strip     { grid-area: rightC;  min-height: 72px; display: grid; gap: var(--g-sm); grid-template-columns: repeat(5, 1fr); }
+
+.gallery{
+  display: grid;
+  gap: var(--g-sm);
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: 90px;
+}
+
+/* ====== Card & Image ====== */
+.card{
+  background: linear-gradient(180deg, var(--card2), var(--card1));
+  border-radius: var(--radius);
+  box-shadow: 0 2px 4px rgba(0,0,0,.06);
+  position: relative;
+  overflow: hidden;
+}
+.card img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Label (ป้ายคำอธิบาย) */
+.card .label{
+  position: absolute;
+  inset: auto 12px 10px 12px;
+  font-size: 12px;
+  color: #fff;
+  background: rgba(0,0,0,0.4);
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+/* Text styles */
+.article h1{ margin: 0 0 8px; font-size: 22px; }
+.article p{ margin: 0 0 12px; color: #444; }
+
+.mini{ height: 56px; }
+
+/* Footer */
+.footer{
+  margin: 20px auto 40px;
+  max-width: var(--maxw);
+  padding: 0 var(--g);
+  color: #444;
+  opacity: .8;
+}
+
+/* Responsive */
+@media (max-width: 1024px){
+  .container{
+    grid-template-columns: 1.3fr 1fr;
+    grid-template-areas:
+      "hero   rightA"
+      "article rightA"
+      "leftA  rightB"
+      "leftB  rightC"
+      "article article";
+  }
+}
+@media (max-width: 640px){
+  .topbar__inner{ flex-wrap: wrap; }
+  .nav ul{ gap: 12px; font-size: 14px; }
+  .container{
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "hero"
+      "rightA"
+      "leftA"
+      "article"
+      "leftB"
+      "rightB"
+      "rightC";
+  }
+  .thumb-strip{ grid-template-columns: repeat(5, 56px); overflow-x: auto; }
+}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar__inner">
+    <div class="logo">LOGO</div>
+    <nav class="nav">
+      <ul>
+        <li><a href="#">หน้าแรก</a></li>
+        <li><a href="#">ข่าว</a></li>
+        <li><a href="#">บทความ</a></li>
+        <li><a href="#">ติดต่อ</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main class="container">
+  <!-- Hero -->
+  <section class="hero card">
+    <img src="png/png45.jpg" alt="Hero Banner">
+    <span class="label">Hero Banner</span>
+  </section>
+
+  <!-- Right Feature -->
+  <aside class="sidebar-feature card">
+    <img src="png/png46.jpg" alt="Right Feature">
+    <span class="label">Right Feature</span>
+  </aside>
+
+  <!-- Left Feature -->
+  <section class="feature-image card">
+    <img src="png/png47.jpg" alt="Left Feature Image">
+    <span class="label">Left Feature Image</span>
+  </section>
+
+  <!-- Article -->
+  <article class="article card">
+    <h1>ที่ TCI MCRU สาขาเทคโนโลยีและนวัตกรรมคอมพิวเตอร์
+นักศึกษาไม่ได้เรียนแค่ในห้องเรียน แต่ยังได้ทำ กิจกรรมเสริมทักษะจริง ทั้งด้านเทคโนโลยีและการทำงานร่วมกับผู้อื่น</h1>
+    <p>กิจกรรมที่ได้ทำ:
+
+เข้าร่วมอบรมและแข่งขันด้านโปรแกรมมิ่ง, IoT, AI และนวัตกรรม
+
+จัดนิทรรศการแสดงผลงานเทคโนโลยีของนักศึกษา
+
+ทำโครงงานและฝึกงานกับบริษัทด้านไอทีจริง
+
+ทำกิจกรรมจิตอาสาและพัฒนาชุมชนด้วยเทคโนโลยี
+
+ฝึกทำงานเป็นทีมและพัฒนาความคิดสร้างสรรค์</p>
+    <p>สิ่งที่เรียน:
+
+การเขียนโปรแกรม พัฒนาเว็บไซต์และแอปฯ
+
+ระบบฐานข้อมูล เครือข่าย และความปลอดภัยไซเบอร์
+
+ปัญญาประดิษฐ์ (AI) และเทคโนโลยีสมัยใหม่</p>
+    <p>เมื่อเรียนจบสามารถทำงานได้ เช่น
+
+โปรแกรมเมอร์ / นักพัฒนาเว็บ / แอปพลิเคชัน
+
+นักวิเคราะห์ระบบ / ผู้ดูแลเครือข่าย
+
+ผู้เชี่ยวชาญด้านเทคโนโลยีสารสนเทศ
+
+ผู้ประกอบการสตาร์ทอัพด้านเทคโนโลยี</p>
+    <p>สรุปสั้น ๆ:
+เรียนที่ TCI MCRU สาขาเทคโนโลยีและนวัตกรรมคอมพิวเตอร์ ได้ทั้งทักษะเทคโนโลยี ความคิดสร้างสรรค์ และประสบการณ์จริง พร้อมต่อยอดสู่สายอาชีพด้านไอทีในอนาคต.</p>
+  </article>
+
+  <!-- Gallery (6 ภาพ) -->
+  <section class="gallery">
+    <div class="tile card"><img src="png/png49.jpg" alt="Gallery 1"></div>
+    <div class="tile card"><img src="png/png50.jpg" alt="Gallery 2"></div>
+    <div class="tile card"><img src="png/png51.jpg" alt="Gallery 3"></div>
+    <div class="tile card"><img src="png/png52.jpg" alt="Gallery 4"></div>
+    <div class="tile card"><img src="png/png53.jpg" alt="Gallery 5"></div>
+    <div class="tile card"><img src="png/png54.jpg" alt="Gallery 6"></div>
+  </section>
+
+  <!-- Right Small Box -->
+  <aside class="sidebar-box card">
+    <img src="png/png48.jpg" alt="Right Small Box">
+    <span class="label">Right Small Box</span>
+  </aside>
+
+  <!-- Right Thumbnails (5 ภาพ) -->
+  <section class="thumb-strip">
+    <div class="mini card"><img src="png/png55.jpg" alt="Thumb 1"></div>
+    <div class="mini card"><img src="png/png56.jpg" alt="Thumb 2"></div>
+    <div class="mini card"><img src="png/png57.jpg" alt="Thumb 3"></div>
+    <div class="mini card"><img src="png/png58.jpg" alt="Thumb 4"></div>
+    <div class="mini card"><img src="png/png59.jpg" alt="Thumb 5"></div>
+  </section>
+</main>
+
+<footer class="footer">
+  <small>© 2025 Your Site</small>
+</footer>
+</body>
+</html>

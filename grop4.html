@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <title>ตัวอย่าง Layout เต็มจอ</title>
+  <style>
+    body {
+      margin: 0;
+      background-color: #88b2b4; 
+      height: 100vh;
+    }
+    .container {
+      display: flex;
+      flex-direction: column;
+      width: 100vw;
+      height: 100vh;
+      background: white;
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    }
+    
+    .header {
+      background: #444;
+      height: 50px;
+      flex-shrink: 0;
+    }
+    
+    .main {
+      display: flex;
+      padding: 20px;
+      gap: 20px;
+      flex: 1; 
+      overflow: hidden;
+    }
+
+    /* ภาพใหญ่ตรงกลาง */
+    .main-image {
+      flex: 2;
+      background: #666;
+      position: relative;
+      overflow: hidden;
+      border-radius: 8px;
+    }
+
+    .main-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* ปุ่มเลื่อนซ้ายขวา */
+    .arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255,255,255,0.6);
+      padding: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      border-radius: 50%;
+      font-size: 20px;
+      user-select: none;
+    }
+    .arrow.left { left: 10px; }
+    .arrow.right { right: 10px; }
+
+    /* ส่วนด้านข้าง (Sidebar) */
+    .sidebar {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .thumb-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      overflow-y: auto;
+    }
+
+    .thumb {
+      background: #bbb;
+      position: relative;
+      padding-bottom: 100%; 
+      border-radius: 5px;
+      overflow: hidden;
+    }
+
+    .thumb img {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .side-arrow {
+      align-self: flex-end;
+      background: rgba(0,0,0,0.1);
+      padding: 6px 10px;
+      cursor: pointer;
+      border-radius: 4px;
+      font-weight: bold;
+      user-select: none;
+    }
+    
+    /* ส่วนท้าย */
+    .footer {
+      border-top: 1px solid #ccc;
+      height: 50px;
+      flex-shrink: 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 20px;
+    }
+    .footer-left,
+    .footer-right {
+      display: flex;
+      gap: 10px;
+    }
+    .box {
+      height: 10px;
+      background: #ccc;
+      border-radius: 2px;
+    }
+    .long { width: 150px; }
+    .short { width: 80px; }
+    .bar { width: 30px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="header"></div>
+
+    <div class="main">
+      <!-- ภาพหลัก -->
+      <div class="main-image">
+        <img src="png/png18.jpg" alt="ภาพหลัก">
+        <div class="arrow left">&#10094;</div>
+        <div class="arrow right">&#10095;</div>
+      </div>
+
+      <!-- Sidebar -->
+      <div class="sidebar">
+        <div class="thumb-grid">
+          <div class="thumb"><img src="png/png19.jpg" alt="thumb 1"></div>
+          <div class="thumb"><img src="png/png20.jpg" alt="thumb 2"></div>
+          <div class="thumb"><img src="png/png21.jpg" alt="thumb 3"></div>
+          <div class="thumb"><img src="png/png22.jpg" alt="thumb 4"></div>
+          <div class="thumb"><img src="png/png23.jpg" alt="thumb 5"></div>
+          <div class="thumb"><img src="png/png24.jpg" alt="thumb 6"></div>
+          <div class="thumb"><img src="png/png25.jpg" alt="thumb 7"></div>
+          <div class="thumb"><img src="png/png26.jpg" alt="thumb 8"></div>
+          <div class="thumb"><img src="png/png27.jpg" alt="thumb 9"></div>
+          <div class="thumb"><img src="png/png28.jpg" alt="thumb 10"></div>
+          <div class="thumb"><img src="png/png29.jpg" alt="thumb 11"></div>
+          <div class="thumb"><img src="png/png30.jpg" alt="thumb 12"></div>
+        </div>
+        <div class="side-arrow">&#10095;</div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <div class="footer-left">
+        <div class="box long"></div>
+        <div class="box short"></div>
+        <div class="box short"></div>
+      </div>
+      <div class="footer-right">
+        <div class="box bar"></div>
+        <div class="box bar"></div>
+        <div class="box bar"></div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

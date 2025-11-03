@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ประวัติส่วนตัว - เศรษฐพงศ์ นาคอ่อน</title>
+  <style>
+    body {
+      background-color: #000;
+      color: #00bfff;
+      font-family: "Prompt", sans-serif;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      padding: 20px;
+    }
+
+    nav a {
+      color: #fff;
+      border: 2px solid red;
+      border-radius: 10px;
+      padding: 10px 20px;
+      text-decoration: none;
+      font-size: 20px;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      background-color: red;
+    }
+
+    .profile img {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      margin-top: 20px;
+      border: 3px solid #fff;
+    }
+
+    .social {
+      margin-top: 20px;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .social a {
+      display: inline-block;
+      color: #fff;
+      font-size: 18px;
+      font-weight: bold;
+      padding: 10px 20px;
+      border-radius: 30px;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    .facebook {
+      background-color: #3b5998;
+    }
+    .instagram {
+      background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+    }
+    .youtube {
+      background-color: #ff0000;
+    }
+
+    .social a:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 10px #fff;
+    }
+
+    .info {
+      margin-top: 30px;
+      font-size: 20px;
+      line-height: 1.6;
+    }
+
+    .gear {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #00bfff;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 0 20px #00bfff;
+    }
+
+    .gear::before {
+      content: "⚙️";
+      font-size: 30px;
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="#">หน้าแรก</a>
+    <a href="#">เกี่ยวกับฉัน</a>
+    <a href="#">หนังสือ</a>
+  </nav>
+
+  <div class="profile">
+    <img src="png/png80.jpg" alt="เศรษฐพงศ์ นาคอ่อน">
+  </div>
+
+  <div class="social">
+    <a href="#" class="facebook">Facebook</a>
+    <a href="#" class="instagram">Instagram</a>
+    <a href="#" class="youtube">YouTube</a>
+  </div>
+
+  <div class="info">
+    <p>นาย เศรษฐพงศ์ นาคอ่อน 674257016</p>
+    <p>คณะวิทยาศาสตร์และเทคโนโลยี</p>
+    <p>สาขาเทคโนโลยีและนวัตกรรมคอมพิวเตอร์</p>
+  </div>
+
+  <div class="gear"></div>
+
+</body>
+</html>

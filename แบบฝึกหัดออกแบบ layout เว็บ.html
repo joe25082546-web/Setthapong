@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <title>Name Page</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root {
+      --blue: #3f6fff;
+      --blue-dark: #2f5bcc;
+      --bg-light: #e3ecff;
+      --radius: 12px;
+      --shadow: 0 6px 18px rgba(0,0,0,0.08);
+      font-family: "Segoe UI", system-ui,-apple-system, sans-serif;
+    }
+    * {box-sizing:border-box;}
+    body {
+      margin:0;
+      background:#f5f6fa;
+      color:#1f2d4a;
+      line-height:1.4;
+    }
+    a {text-decoration:none; color:inherit;}
+    .navbar {
+      background: var(--blue);
+      padding: 10px 20px;
+      display:flex;
+      align-items:center;
+      gap:1rem;
+      flex-wrap:wrap;
+      color:white;
+    }
+    .navbar .brand {
+      font-weight:700;
+      font-size:1.2rem;
+      flex:1;
+    }
+    .navbar .links {
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      font-size:0.9rem;
+    }
+    .navbar .links a {
+      color:white;
+      font-weight:500;
+      padding:6px 10px;
+      border-radius:6px;
+    }
+    .navbar .links a:hover {
+      background: rgba(255,255,255,0.1);
+    }
+    .hero {
+      background:#888;
+      color:white;
+      padding:80px 20px;
+      position:relative;
+      text-align:center;
+    }
+    .hero .inner {
+      max-width:1000px;
+      margin:0 auto;
+    }
+    .hero h1 {
+      margin:0 0 10px;
+      font-size:2rem;
+      letter-spacing:1px;
+      font-weight:500;
+    }
+    .hero p {
+      margin:0;
+      opacity:0.9;
+    }
+    .section-title {
+      text-align:center;
+      font-size:2.5rem;
+      font-weight:700;
+      margin:60px 0 20px;
+      letter-spacing:1px;
+      color: var(--blue);
+    }
+    .container {
+      max-width:1200px;
+      margin:0 auto;
+      padding:0 16px;
+    }
+    .cards-grid {
+      display:grid;
+      gap:24px;
+    }
+    /* Products: 2 columns on desktop, 1 mobile */
+    .products .cards-grid {
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+    .product-card, .service-card {
+      display:flex;
+      background:white;
+      border-radius:10px;
+      overflow:hidden;
+      box-shadow: var(--shadow);
+      min-height:140px;
+      position:relative;
+    }
+    .product-card .img, .service-card .img {
+      background:#bbb;
+      flex:1 1 40%;
+      min-width:120px;
+    }
+    .product-card .info, .service-card .info {
+      flex:1 1 60%;
+      padding:14px 16px;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+      position:relative;
+    }
+    .product-card .info .title {
+      font-size:1.2rem;
+      font-weight:700;
+      margin:0 0 6px;
+    }
+    .product-card .info .detail {
+      font-size:0.9rem;
+      color: #3f6fff;
+      margin:0 0 6px;
+    }
+    .product-card .info .desc {
+      font-size:0.75rem;
+      opacity:0.7;
+      margin:0;
+      flex-grow:1;
+    }
+    .service-wrapper {
+      background: var(--bg-light);
+      padding:40px 0;
+    }
+    .service-cards {
+      display:grid;
+      gap:24px;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    }
+    .service-card {
+      flex-direction:column;
+    }
+    .service-card .img {
+      height:140px;
+      width:100%;
+      flex:0 0 auto;
+    }
+    .service-card .info {
+      padding:12px 14px;
+      flex:1;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+    }
+    .more-btn {
+      background: var(--blue);
+      color:white;
+      border:none;
+      padding:10px;
+      cursor:pointer;
+      font-size:0.9rem;
+      border-radius:6px;
+      width:100%;
+      letter-spacing:1px;
+      font-weight:600;
+    }
+    .more-btn:hover {background: var(--blue-dark);}
+    .footer {
+      background: var(--blue);
+      color:white;
+      text-align:center;
+      padding:14px 8px;
+      font-size:0.9rem;
+    }
+    /* modal */
+    .modal-backdrop {
+      position:fixed;
+      inset:0;
+      background:rgba(0,0,0,0.35);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:20px;
+      z-index:10;
+      opacity:0;
+      pointer-events:none;
+      transition:opacity .2s ease;
+    }
+    .modal-backdrop.show {
+      opacity:1;
+      pointer-events:auto;
+    }
+    .modal {
+      background:white;
+      border-radius:12px;
+      max-width:500px;
+      width:100%;
+      padding:24px;
+      position:relative;
+      box-shadow:0 24px 60px rgba(0,0,0,0.15);
+    }
+    .modal h2 {
+      margin-top:0;
+      font-size:1.8rem;
+    }
+    .modal p {
+      margin:8px 0 16px;
+    }
+    .close-btn {
+      position:absolute;
+      top:10px;
+      right:10px;
+      background:transparent;
+      border:none;
+      font-size:1.2rem;
+      cursor:pointer;
+    }
+    @media (max-width: 900px) {
+      .hero h1 {font-size:1.6rem;}
+      .section-title {font-size:2rem;}
+    }
+  </style>
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="brand">NAME PAGE</div>
+    <nav class="links">
+      <a href="#home">HOME</a>
+      <a href="#products">PRODUCTS</a>
+      <a href="#about">ABOUT US</a>
+      <a href="#contact">CONTACT US</a>
+    </nav>
+  </header>
+
+  <section class="hero" id="home">
+    <div class="inner">
+      <h1>Short content about page .....</h1>
+      <p>.......................................</p>
+    </div>
+  </section>
+
+  <main class="container">
+    <section class="products" id="products">
+      <div class="section-title">PRODUCTS</div>
+      <div class="cards-grid">
+        <!-- Product card template -->
+        <div class="product-card" data-name="Product A" data-detail="รายละเอียด A" data-desc="รายละเอียดเพิ่มเติมของสินค้า A">
+          <div class="img"></div>
+          <div class="info">
+            <div>
+              <div class="title">Name</div>
+              <div class="detail">Detail..........</div>
+              <p class="desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card" data-name="Product B" data-detail="รายละเอียด B" data-desc="รายละเอียดเพิ่มเติมของสินค้า B">
+          <div class="img"></div>
+          <div class="info">
+            <div>
+              <div class="title">Name</div>
+              <div class="detail">Detail..........</div>
+              <p class="desc">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card" data-name="Product C" data-detail="รายละเอียด C" data-desc="รายละเอียดเพิ่มเติมของสินค้า C">
+          <div class="img"></div>
+          <div class="info">
+            <div>
+              <div class="title">Name</div>
+              <div class="detail">Detail..........</div>
+              <p class="desc">Ut enim ad minim veniam, quis nostrud exercitation.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card" data-name="Product D" data-detail="รายละเอียด D" data-desc="รายละเอียดเพิ่มเติมของสินค้า D">
+          <div class="img"></div>
+          <div class="info">
+            <div>
+              <div class="title">Name</div>
+              <div class="detail">Detail..........</div>
+              <p class="desc">Duis aute irure dolor in reprehenderit in voluptate velit.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <section class="service-wrapper" id="services">
+    <div class="container">
+      <div class="section-title">SERVICES</div>
+      <div class="service-cards">
+        <div class="service-card" data-name="Service 1" data-detail="บริการ 1" data-desc="คำอธิบายบริการ 1">
+          <div class="img"></div>
+          <div class="info">
+            <div>
+              <div class="title">Name</div>
+              <div class="detail">Detail..........</div>
+              <p class="desc">บริการที่ยอดเยี่ยมสำหรับลูกค้า</p>
+            </div>
+            <button class="more-btn" data-type="service">MORE</button>
+          </div>
+        </div>
+
+        <div class="service-card" data-name="Service 2" data-detail="บริการ 2" data-desc="คำอธิบายบริการ 2">
+          <div class="img"></div>
+          <div class="info">
+            <div>
+              <div class="title">Name</div>
+              <div class="detail">Detail..........</div>
+              <p class="desc">คำอธิบายสั้นๆ เกี่ยวกับบริการนี้</p>
+            </div>
+            <button class="more-btn" data-type="service">MORE</button>
+          </div>
+        </div>
+
+        <div class="service-card" data-name="Service 3" data-detail="บริการ 3" data-desc="คำอธิบายบริการ 3">
+          <div class="img"></div>
+          <div class="info">
+            <div>
+              <div class="title">Name</div>
+              <div class="detail">Detail..........</div>
+              <p class="desc">ให้บริการอย่างมืออาชีพ</p>
+            </div>
+            <button class="more-btn" data-type="service">MORE</button>
+          </div>
+        </div>
+
+        <div class="service-card" data-name="Service 4" data-detail="บริการ 4" data-desc="คำอธิบายบริการ 4">
+          <div class="img"></div>
+          <div class="info">
+            <div>
+              <div class="title">Name</div>
+              <div class="detail">Detail..........</div>
+              <p class="desc">รองรับความต้องการหลากหลาย</p>
+            </div>
+            <button class="more-btn" data-type="service">MORE</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    © Copyright
+  </footer>
+
+  <!-- Modal -->
+  <div class="modal-backdrop" id="modalBackdrop" aria-hidden="true">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button class="close-btn" aria-label="Close">&times;</button>
+      <h2 id="modalTitle">ชื่อ</h2>
+      <p class="modal-detail">Detail...</p>
+      <p class="modal-desc">คำอธิบายเพิ่มเติมของรายการ</p>
+    </div>
+  </div>
+
+  <script>
+    // เปิด modal เมื่อกด MORE
+    document.querySelectorAll('.more-btn').forEach(btn => {
+      btn.addEventListener('click', e => {
+        const card = e.target.closest('.service-card');
+        const name = card.dataset.name || "Name";
+        const detail = card.dataset.detail || "";
+        const desc = card.dataset.desc || "";
+        const modal = document.getElementById('modalBackdrop');
+        modal.querySelector('#modalTitle').textContent = name;
+        modal.querySelector('.modal-detail').textContent = detail;
+        modal.querySelector('.modal-desc').textContent = desc + " เพิ่มเติม...";
+        modal.classList.add('show');
+      });
+    });
+    // ปิด modal
+    document.querySelectorAll('.close-btn, #modalBackdrop').forEach(el => {
+      el.addEventListener('click', e => {
+        const modal = document.getElementById('modalBackdrop');
+        // ถ้าคลิกพื้นหลัง หรือปุ่มปิด
+        if (e.target === el || e.target.classList.contains('close-btn')) {
+          modal.classList.remove('show');
+        }
+      });
+    });
+    // ป้องกันการปิดเมื่อคลิกในกล่อง modal เอง
+    document.querySelector('.modal').addEventListener('click', e => {
+      e.stopPropagation();
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ข่าวสาร — การรับสมัครนักศึกษา ปีการศึกษา 2569 รอบที่ 1</title>
+  <style>
+    :root{--bg:#f6f8fb;--card:#ffffff;--accent:#0b5ed7;--muted:#6b7280}
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Inter,system-ui,Arial;background:var(--bg);color:#0f172a}
+    .wrap{max-width:900px;margin:28px auto;padding:18px}
+    header{display:flex;align-items:center;justify-content:space-between;gap:12px}
+    h1{margin:0;font-size:20px;color:#0b5ed7}
+    p.lead{margin:6px 0 0;color:var(--muted)}
+    .news-list{margin-top:18px;display:grid;gap:12px}
+    .news{background:var(--card);padding:14px;border-radius:10px;box-shadow:0 6px 18px rgba(2,6,23,0.06);border-left:4px solid var(--accent)}
+    .news h2{margin:0 0 8px 0;font-size:18px}
+    .meta{color:var(--muted);font-size:13px;margin-bottom:8px}
+    .excerpt{margin:0 0 12px 0;line-height:1.5}
+    .actions{display:flex;gap:8px;align-items:center}
+    .btn{display:inline-block;padding:8px 12px;border-radius:8px;text-decoration:none;font-weight:600}
+    .btn.primary{background:var(--accent);color:#fff}
+    .btn.ghost{border:1px solid #e6e9ef;color:var(--muted);background:transparent}
+    footer{margin-top:18px;color:var(--muted);font-size:13px;text-align:center}
+    @media (max-width:520px){header{flex-direction:column;align-items:flex-start}}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div>
+        <h1>ข่าวสาร & ประชาสัมพันธ์</h1>
+        <p class="lead">รวมประกาศสำคัญเกี่ยวกับการรับสมัครและหลักสูตร</p>
+      </div>
+    </header>
+
+    <div class="news-list">
+      <!-- ข่าวเด่น: การรับสมัคร 2569 รอบที่ 1 -->
+      <article class="news" id="admission-2569-1">
+        <h2>การรับสมัครนักศึกษา ปีการศึกษา 2569 ภาคปกติ — รอบที่ 1</h2>
+        <div class="meta">ประกาศเมื่อ: <strong>—</strong> · หมวด: การรับสมัคร</div>
+        <p class="excerpt">
+          คัดเลือกเข้าศึกษาต่อในระดับปริญญาตรี (ภาคปกติ) สำหรับปีการศึกษา 2569 — รอบที่ 1
+          ผู้สมัครต้องสำเร็จการศึกษาระดับมัธยมศึกษาตอนปลายหรือเทียบเท่า และปฏิบัติตามเงื่อนไขและเกณฑ์การคัดเลือกของมหาวิทยาลัย
+          (โปรดตรวจสอบรายละเอียดคุณสมบัติ เอกสารที่ต้องใช้ และวันเวลาในการสมัครในประกาศอย่างเป็นทางการ)
+        </p>
+        <div class="actions">
+          <!-- เปลี่ยน href เป็น URL จริงของประกาศ/เอกสาร -->
+          <a class="btn primary" href="#" id="readMore">อ่านเพิ่มเติม: การรับสมัครนักศึกษา ปีการศึกษา 2569 ภาคปกติ รอบที่ 1</a>
+          <a class="btn ghost" href="#" id="downloadPdf">ดาวน์โหลดประกาศ (PDF)</a>
+        </div>
+      </article>
+
+      <!-- ตัวอย่างข่าวเพิ่มเติม -->
+      <article class="news">
+        <h2>อัปเดตหลักสูตร HTML/CSS — ปรับปรุงโมดูล Responsive & Accessibility</h2>
+        <div class="meta">ประกาศเมื่อ: — · หมวด: หลักสูตร</div>
+        <p class="excerpt">หลักสูตร HTML/CSS ได้อัปเดตเนื้อหาโมดูลการออกแบบ responsive และเพิ่มเนื้อหาเกี่ยวกับการเข้าถึงเว็บไซต์ (accessibility) เพื่อรองรับการสอนและการใช้งานจริงในชั้นเรียน</p>
+        <div class="actions"><a class="btn primary" href="#">อ่านเพิ่มเติม</a></div>
+      </article>
+
+      <article class="news">
+        <h2>อัปเดตหลักสูตร Java — เพิ่มหัวข้อ Concurrency</h2>
+        <div class="meta">ประกาศเมื่อ: — · หมวด: หลักสูตร</div>
+        <p class="excerpt">หลักสูตร Java ได้เพิ่มหัวข้อการประมวลผลแบบขนาน (Concurrency) และเทคนิคการเขียนโปรแกรมมัลติเทรด เพื่อเตรียมความพร้อมนักศึกษาสำหรับงานจริง</p>
+        <div class="actions"><a class="btn primary" href="#">อ่านเพิ่มเติม</a></div>
+      </article>
+    </div>
+
+    <footer>
+      หากต้องการให้เชื่อมลิงก์จริงหรือแนบไฟล์ PDF ให้ส่ง URL หรือไฟล์มาได้เลย
+    </footer>
+  </div>
+
+  <script>
+    // ตัวอย่าง: เพิ่มพฤติกรรมอ่านเพิ่มเติม (ถ้ามีลิงก์จริงให้แทน href)
+    document.getElementById('readMore').addEventListener('click', function(e){
+      e.preventDefault();
+      // ถ้าต้องการเปิดหน้าใหม่ให้เปลี่ยนเป็น window.open('URL','_blank')
+      alert('ไปที่: การรับสมัครนักศึกษา ปีการศึกษา 2569 ภาคปกติ รอบที่ 1\\n(เปลี่ยนลิงก์ href เป็น URL จริงเพื่อให้ใช้งานได้)');
+    });
+    document.getElementById('downloadPdf').addEventListener('click', function(e){
+      e.preventDefault();
+      alert('ดาวน์โหลดประกาศ (PDF) — ใส่ URL ไฟล์จริงที่ href เพื่อให้ปุ่มนี้ดาวน์โหลดได้');
+    });
+  </script>
+</body>
+</html>

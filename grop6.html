@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <title>Layout ตามภาพ</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0; 
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #fff;
+      padding: 20px;
+    }
+
+    /* Header */
+    header {
+      background-color: #4a4a4a;
+      height: 40px;
+      margin-bottom: 20px;
+      border-radius: 4px;
+    }
+
+    /* Container 3 คอลัมน์ */
+    .container {
+      display: flex;
+      gap: 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    /* คอลัมน์ซ้าย */
+    .left {
+      flex: 3;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    /* กล่อง 3x2 เล็ก */
+    .left-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-gap: 10px;
+    }
+
+    .left-grid > div {
+      background-color: #ddd;
+      height: 100px;
+      border-radius: 6px;
+      overflow: hidden;
+    }
+
+    /* กล่องล่างใหญ่ */
+    .left-bottom {
+      background-color: #bbb;
+      height: 100px;
+      border-radius: 6px;
+      overflow: hidden;
+    }
+
+    /* คอลัมน์กลาง */
+    .center {
+      flex: 2;
+      background-color: #ccc;
+      border-radius: 6px;
+      min-height: 320px;
+      overflow: hidden;
+    }
+
+    /* คอลัมน์ขวา */
+    .right {
+      flex: 2;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .right-top,
+    .right-small,
+    .right-wide {
+      border-radius: 6px;
+      overflow: hidden;
+    }
+
+    .right-top {
+      height: 150px;
+    }
+
+    .right-small {
+      height: 50px;
+    }
+
+    .right-wide {
+      height: 100px;
+      margin-top: 10px;
+    }
+
+    /* รูปภาพในทุกกล่อง */
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+
+  <header></header>
+
+  <div class="container">
+    <!-- ฝั่งซ้าย -->
+    <div class="left">
+      <div class="left-grid">
+        <div><img src="png/png35.jpg" alt="ภาพ 1"></div>
+        <div><img src="png/png36.jpg" alt="ภาพ 2"></div>
+        <div><img src="png/png37.jpg" alt="ภาพ 3"></div>
+        <div><img src="png/png38.jpg" alt="ภาพ 4"></div>
+        <div><img src="png/png39.jpg" alt="ภาพ 5"></div>
+        <div><img src="png/png40.jpg" alt="ภาพ 6"></div>
+      </div>
+      <div class="left-bottom">
+        <img src="png/png32.jpg" alt="ภาพ 7">
+      </div>
+    </div>
+
+    <!-- ตรงกลาง -->
+    <div class="center">
+      <img src="png/png33.jpg" alt="ภาพ 8">
+    </div>
+
+    <!-- ฝั่งขวา -->
+    <div class="right">
+      <div class="right-top">
+        <img src="png/png34.jpg" alt="ภาพ 9">
+      </div>
+      <div class="right-small">
+        <img src="png/png41.jpg" alt="ภาพ 10">
+      </div>
+      <div class="right-small">
+        <img src="png/png42.jpg" alt="ภาพ 11">
+      </div>
+      <div class="right-small">
+        <img src="png/png43.jpg" alt="ภาพ 12">
+      </div>
+      <div class="right-wide">
+        <img src="png/png44.jpg" alt="ภาพ 13">
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

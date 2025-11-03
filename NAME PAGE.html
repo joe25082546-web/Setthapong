@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NAME PAGE</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background-color: #fff;
+      color: #333;
+    }
+
+    /* Header */
+    .top-bar {
+      background-color: #5b84e0;
+      padding: 15px;
+      text-align: left;
+      color: white;
+    }
+
+    nav {
+      background-color: #3b6ac8;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      padding: 10px 0;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: white;
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    /* About Section */
+    .about {
+      background-color: #999;
+      text-align: center;
+      padding: 40px;
+      color: white;
+      font-size: 18px;
+    }
+
+    /* Products */
+    .products {
+      padding: 40px 0;
+      text-align: center;
+    }
+
+    .products h2 {
+      color: #3366ff;
+      margin-bottom: 30px;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 25px;
+      justify-items: center;
+      width: 80%;
+      margin: auto;
+    }
+
+    .product-card {
+      display: flex;
+      width: 300px;
+      height: 100px;
+      background-color: #fff;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    }
+
+    .product-card .img-box {
+      background-color: #999;
+      width: 40%;
+    }
+
+    .product-card .text-box {
+      padding: 10px;
+      text-align: left;
+    }
+
+    .product-card h3 {
+      color: #000;
+      font-size: 16px;
+    }
+
+    .product-card .detail {
+      color: #3366ff;
+      font-size: 14px;
+      margin-top: 5px;
+    }
+
+    /* Services */
+    .services {
+      background-color: #dce6ff;
+      text-align: center;
+      padding: 40px 0;
+    }
+
+    .services h2 {
+      color: #3366ff;
+      margin-bottom: 30px;
+    }
+
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 25px;
+      justify-items: center;
+      width: 85%;
+      margin: auto;
+    }
+
+    .service-card {
+      background-color: white;
+      width: 200px;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .service-card .img-box {
+      background-color: #999;
+      height: 120px;
+    }
+
+    .service-card .text-box {
+      padding: 10px;
+    }
+
+    .service-card h3 {
+      color: #000;
+      font-size: 16px;
+    }
+
+    .service-card .detail {
+      color: #3366ff;
+      font-size: 14px;
+      margin: 5px 0;
+    }
+
+    .service-card button {
+      background-color: #3366ff;
+      color: white;
+      border: none;
+      width: 100%;
+      padding: 8px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    /* Footer */
+    footer {
+      background-color: #5b84e0;
+      text-align: center;
+      color: white;
+      padding: 10px;
+      font-size: 14px;
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="top-bar">
+      <h1>NAME PAGE</h1>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="#">HOME</a></li>
+        <li><a href="#">PRODUCTS</a></li>
+        <li><a href="#">ABOUT US</a></li>
+        <li><a href="#">CONTACT US</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- About Section -->
+  <section class="about">
+    <p>Short content about page . . . . .</p>
+  </section>
+
+  <!-- Products Section -->
+  <section class="products">
+    <h2>PRODUCTS</h2>
+    <div class="product-grid">
+      <div class="product-card">
+        <div class="img-box"></div>
+        <div class="text-box">
+          <h3>Name</h3>
+          <p class="detail">Detail . . . . . . .</p>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="img-box"></div>
+        <div class="text-box">
+          <h3>Name</h3>
+          <p class="detail">Detail . . . . . . .</p>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="img-box"></div>
+        <div class="text-box">
+          <h3>Name</h3>
+          <p class="detail">Detail . . . . . . .</p>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="img-box"></div>
+        <div class="text-box">
+          <h3>Name</h3>
+          <p class="detail">Detail . . . . . . .</p>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="img-box"></div>
+        <div class="text-box">
+          <h3>Name</h3>
+          <p class="detail">Detail . . . . . . .</p>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="img-box"></div>
+        <div class="text-box">
+          <h3>Name</h3>
+          <p class="detail">Detail . . . . . . .</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section class="services">
+    <h2>SERVICES</h2>
+    <div class="service-grid">
+      <div class="service-card">
+        <div class="img-box"></div>
+        <div class="text-box">
+          <h3>Name</h3>
+          <p class="detail">Detail . . . . . . .</p>
+          <button>MORE</button>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="img-box"></div>
+        <div class="text-box">
+          <h3>Name</h3>
+          <p class="detail">Detail . . . . . . .</p>
+          <button>MORE</button>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="img-box"></div>
+        <div class="text-box">
+          <h3>Name</h3>
+          <p class="detail">Detail . . . . . . .</p>
+          <button>MORE</button>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="img-box"></div>
+        <div class="text-box">
+          <h3>Name</h3>
+          <p class="detail">Detail . . . . . . .</p>
+          <button>MORE</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>Copyright</p>
+  </footer>
+
+</body>
+</html>

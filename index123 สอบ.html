@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Info System</title>
+  <style>
+    /* ---------------- GLOBAL STYLE ---------------- */
+    body {
+      font-family: "Prompt", "Segoe UI", Tahoma, sans-serif;
+      margin: 0;
+      background: linear-gradient(135deg, #eef1f7, #f3f6ff);
+      color: #333;
+      animation: fadeIn 1.2s ease-in;
+    }
+    h2, h3 { margin-top: 0; }
+
+    /* ---------------- HEADER ---------------- */
+    header {
+      background: linear-gradient(90deg, #3a47d5, #6a85f1);
+      color: white;
+      text-align: center;
+      padding: 25px 10px;
+      font-size: 28px;
+      font-weight: bold;
+      letter-spacing: 1px;
+      box-shadow: 0 3px 15px rgba(0,0,0,0.2);
+      animation: slideDown 0.8s ease-out;
+    }
+
+    /* ---------------- NAVIGATION ---------------- */
+    nav {
+      background: #2f3b8f;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      animation: fadeIn 1s ease-in;
+    }
+    nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    nav ul li {
+      position: relative;
+    }
+    nav ul li a {
+      display: block;
+      padding: 14px 25px;
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: 0.3s ease, transform 0.2s ease;
+    }
+    nav ul li a:hover {
+      background: #1d297a;
+      border-radius: 6px;
+      transform: scale(1.05);
+    }
+
+    /* Dropdown */
+    nav ul li ul {
+      position: absolute;
+      top: 48px;
+      left: 0;
+      background: #2f3b8f;
+      display: none;
+      min-width: 200px;
+      flex-direction: column;
+      border-radius: 8px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+      opacity: 0;
+      transform: translateY(10px);
+      transition: 0.3s ease;
+    }
+    nav ul li:hover ul {
+      display: flex;
+      opacity: 1;
+      transform: translateY(0);
+    }
+    nav ul li ul li a {
+      padding: 12px 18px;
+    }
+    nav ul li ul li a:hover {
+      background: #1d297a;
+    }
+
+    /* ---------------- LAYOUT ---------------- */
+    .container {
+      display: grid;
+      grid-template-columns: 250px 1fr 200px;
+      grid-template-areas:
+        "sidebar main right"
+        "footer footer footer";
+      gap: 20px;
+      margin: 20px;
+    }
+
+    .sidebar, .main, .rightbar {
+      background: #fff;
+      border-radius: 14px;
+      padding: 20px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+      transition: 0.3s ease, transform 0.3s ease;
+      animation: fadeInUp 0.8s ease-out;
+    }
+    .sidebar:hover, .main:hover, .rightbar:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    }
+    .sidebar { grid-area: sidebar; }
+    .main { grid-area: main; }
+    .rightbar { grid-area: right; }
+
+    footer {
+      grid-area: footer;
+      background: linear-gradient(90deg, #3a47d5, #6a85f1);
+      color: white;
+      text-align: center;
+      padding: 18px;
+      border-radius: 12px;
+      margin-top: 10px;
+      box-shadow: 0 -3px 10px rgba(0,0,0,0.15);
+      animation: slideUp 0.8s ease-out;
+    }
+
+    /* ---------------- TABLE ---------------- */
+    .card-title {
+      font-size: 22px;
+      font-weight: 600;
+      margin-bottom: 15px;
+      color: #2f3b8f;
+      animation: fadeInLeft 0.8s ease-out;
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin: 20px 0;
+      background: #fff;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+      animation: fadeIn 1s ease-in;
+    }
+    table thead {
+      background: #3a47d5;
+      color: white;
+    }
+    th, td {
+      padding: 14px;
+      text-align: center;
+      font-size: 15px;
+      transition: 0.3s ease, background 0.3s ease;
+    }
+    tr:nth-child(even) { background: #f8faff; }
+    tr:hover { background: #eef3ff; }
+
+    /* ---------------- SUMMARY BOX ---------------- */
+    .summary {
+      background: #f9fbff;
+      border-left: 6px solid #3a47d5;
+      padding: 15px;
+      border-radius: 12px;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.1);
+      margin-top: 20px;
+      animation: fadeInUp 0.8s ease-out;
+    }
+    .summary p {
+      margin: 5px 0;
+      font-size: 16px;
+    }
+    .summary span {
+      font-weight: bold;
+      color: #2f3b8f;
+    }
+
+    /* ---------------- RESPONSIVE GRID ---------------- */
+    @media (max-width: 992px) {
+      .container {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+          "main"
+          "sidebar"
+          "right"
+          "footer";
+      }
+    }
+
+    /* ---------------- ANIMATIONS ---------------- */
+    @keyframes fadeIn {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+    @keyframes fadeInUp {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeInLeft {
+      0% { opacity: 0; transform: translateX(-20px); }
+      100% { opacity: 1; transform: translateX(0); }
+    }
+    @keyframes slideDown {
+      0% { opacity: 0; transform: translateY(-20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes slideUp {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>674257016 JOJOE</header>
+
+  <!-- Navigation -->
+  <nav>
+    <ul>
+      <li><a href="#">หน้าแรก</a></li>
+      <li><a href="#">เกี่ยวกับเรา</a></li>
+      <li>
+        <a href="#">บริการ ▼</a>
+        <ul>
+          <li><a href="#">เว็บไซต์</a></li>
+          <li><a href="#">แอปพลิเคชัน</a></li>
+          <li><a href="#">SEO</a></li>
+        </ul>
+      </li>
+      <li><a href="#">ติดต่อเรา</a></li>
+    </ul>
+  </nav>
+
+  <!-- Layout -->
+  <div class="container">
+    <div class="sidebar">
+      <h3>📌 เมนูด้านซ้าย</h3>
+      <p>พื้นที่ Sidebar 250px</p>
+    </div>
+
+    <div class="main">
+      <h2 class="card-title">📊 ตารางข้อมูลนักศึกษา</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>รหัสนักเรียน</th>
+            <th>ชื่อ-นามสกุล</th>
+            <th>คณะ</th>
+            <th>GPA</th>
+            <th>สถานะ</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>674257023</td><td>แสงระวี เถกิงวิทย์สถาพร</td><td>วิศวกรรม</td><td>3.25</td><td>ผ่าน</td></tr>
+          <tr><td>674257022</td><td>ปัทมา กลิ่นเพชร</td><td>ครุศาสตร์</td><td>3.75</td><td>ผ่าน</td></tr>
+          <tr><td>674257003</td><td>ธนากร ชัยสะท้าน</td><td>บริหาร</td><td>2.15</td><td>ไม่ผ่าน</td></tr>
+          <tr><td>674257002</td><td>คุนาสิน แย้มสิน</td><td>วิทยาศาสตร์</td><td>3.00</td><td>ผ่าน</td></tr>
+          <tr><td>674257006</td><td>พงศกร บัวจีน</td><td>ศิลปศาสตร์</td><td>2.90</td><td>ผ่าน</td></tr>
+        </tbody>
+      </table>
+
+      <div class="summary">
+        <p><b>สถิติ:</b></p>
+        <p>👨‍🎓 จำนวนนักเรียนทั้งหมด: <span>5 คน</span></p>
+        <p>📈 GPA เฉลี่ย: <span id="avgGPA"></span></p>
+      </div>
+    </div>
+
+    <div class="rightbar">
+      <h3>ℹ️ ข้อมูลเพิ่มเติม</h3>
+      <p>พื้นที่ Sidebar 200px</p>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>© 2025 นายเศรษฐพงศ์ นาคอ่อน </footer>
+
+  <!-- Script คำนวณค่าเฉลี่ย -->
+  <script>
+    const gpas = [3.25, 3.75, 2.15, 3.00, 2.90];
+    const avg = gpas.reduce((a, b) => a + b, 0) / gpas.length;
+    document.getElementById("avgGPA").textContent = avg.toFixed(2);
+  </script>
+
+</body>
+</html>
